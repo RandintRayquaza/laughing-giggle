@@ -21,6 +21,8 @@
   - Changed `::selection` color to istmX deep blue (`#0d74ce`)
   - Upgraded CTA with glowing blue box shadows and `active:scale` press feedback
   - Rebuilt the CLI plate into a fully interactive copy button with a temporary glowing green checkmark state
+- [x] Light Mode Architecture Transition
+  - Refactored `Showcase.tsx` from dark to strict Light Mode tokens (`canvas-soft`, `ink`, `surface-card`)
 - [x] Implemented GSAP Animations
   - Added initial mount animations (Hero reveal, staggering, background scaling)
 - [x] Installed custom manual `favicon.ico` into `app/` folder
