@@ -123,7 +123,7 @@ Keep business logic isolated. Pages should only act as routing layers rendering 
 
 # Styling Rules & Constants
 
-- Never hardcode colors, spacing, typography, border radius, or shadows. Always use Tailwind design tokens defined in `globals.css` or `tailwind.config`.
+- Never hardcode colors, spacing, typography, border radius, or shadows. Always use Tailwind design tokens defined in `globals.css` (using Tailwind v4 `@theme` directives).
 - Never hardcode strings for routes or animation values. Create constants.
 
 ---

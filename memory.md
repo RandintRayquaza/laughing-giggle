@@ -135,6 +135,11 @@ This document tracks all system architecture bugs, root causes, and verified res
   3. Added environment loading safeguards in `ensure_env_loaded()` so API keys resolve cleanly across all sub-directories.
   4. Verified all 4 context blueprints (`agents.md`, `design.md`, `architecture.md`, `project-overview.md`) generate 5,000+ chars of markdown in **under 0.5 seconds per file**!
 
+### 19. UX Aesthetic Constraints: NO Eyebrow Badges (`page.tsx`)
+- **Symptom**: User explicitly rejected the "Eyebrow Badge" (the small pill above the H1).
+- **Root Cause**: Over-indexing on generic SaaS templates.
+- **Resolution**: **NEVER** use eyebrow badges in any UI design for this user. Stick to stark, confident, minimal typography.
+
 ---
 
 ## 🔒 Agent Guidelines & Verification Protocol
