@@ -494,6 +494,15 @@ Two critical memory tracking files exist in the project:
 
 ---
 
+# Code Comments
+
+Never write comments in the code.
+Code should be self-documenting.
+Do not use `//` or `/* */` or JSX comments `{/* */}`.
+If logic is complex, explain the reasoning in the PR or documentation, not in the source file.
+
+---
+
 # Documentation
 
 
