@@ -13,6 +13,9 @@
 - [x] Built the Top Navigation (`features/landing/ui/Navbar.tsx`)
   - Converted from full-width to a floating, centered pill design
   - Upgraded interaction quality with animated hover pills and external icons (bouncy easing removed per user preference)
+  - Implemented dynamic Framer Motion scroll states (navbar shrinks and frost intensifies on scroll)
+  - Injected physical noise texture overlay for ultra-premium glassmorphism feel
+  - Added mini right-anchored "Get Started" glowing CTA
   - Added mobile responsiveness
 - [x] Refined Global Styles & Hero Micro-Interactions
   - Changed `::selection` color to istmX deep blue (`#0d74ce`)

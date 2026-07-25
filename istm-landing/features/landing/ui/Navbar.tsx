@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Skills", path: "#skills" },
@@ -14,6 +14,12 @@ const navItems = [
 export default function Navbar() {
   const container = useRef<HTMLDivElement>(null);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
   useGSAP(() => {
     gsap.from(".nav-container", {
@@ -26,14 +32,26 @@ export default function Navbar() {
   }, { scope: container });
 
   return (
-    <div ref={container} className="relative z-20 w-full pt-6 px-4 flex justify-center">
-      <nav className="nav-container w-full max-w-2xl h-14 flex items-center justify-between px-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-lg">
-        
+    <div ref={container} className="fixed top-0 left-0 right-0 z-50 w-full flex justify-center pointer-events-none">
+      <motion.nav 
+        animate={{
+          marginTop: isScrolled ? "16px" : "24px",
+          width: "100%",
+          maxWidth: isScrolled ? "700px" : "900px",
+          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.05)",
+          borderColor: isScrolled ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.05)",
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="nav-container pointer-events-auto h-14 mx-4 flex items-center justify-between px-6 backdrop-blur-xl border rounded-full shadow-lg relative overflow-hidden"
+      >
+        {/* Subtle physical noise texture overlay to enhance the glass feel */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
         <Link href="/" className="text-white font-black text-lg tracking-wider flex items-center gap-1 hover:opacity-80 transition-opacity z-10">
           ISTM<span className="opacity-70 font-medium">X</span>
         </Link>
         
-        <div className="hidden md:flex items-center text-sm font-bold text-white/80 tracking-wide relative">
+        <div className="hidden md:flex items-center text-sm font-bold text-white/80 tracking-wide relative z-10">
           
           {navItems.map((item) => (
             <Link
@@ -87,12 +105,21 @@ export default function Navbar() {
           </Link>
         </div>
         
-        <button aria-label="Open Menu" className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/15 transition-colors text-white/90 z-10">
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </nav>
+        <div className="flex items-center gap-3 z-10">
+          <Link 
+            href="#install"
+            className="hidden md:flex h-8 px-4 items-center justify-center rounded-full bg-text-link hover:bg-text-link-secondary text-white text-xs font-bold transition-all shadow-[0_0_10px_rgba(13,116,206,0.3)] hover:shadow-[0_0_15px_rgba(13,116,206,0.6)] active:scale-95"
+          >
+            Get Started
+          </Link>
+
+          <button aria-label="Open Menu" className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/15 transition-colors text-white/90">
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </motion.nav>
     </div>
   );
 }
