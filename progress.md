@@ -12,6 +12,7 @@
   - Blue CTA (`text-link` background) for high contrast against the landscape
 - [x] Built the Top Navigation (`features/landing/ui/Navbar.tsx`)
   - Converted from full-width to a floating, centered pill design
+  - Upgraded interaction quality with animated hover pills and external icons
   - Added mobile responsiveness
 - [x] Implemented GSAP Animations
   - Added initial mount animations (Hero reveal, staggering, background scaling)
