@@ -47,13 +47,13 @@ export default function Home() {
         <div className="max-w-3xl w-full px-4 flex flex-col items-center">
           
           <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
-            The future AI developer <br />
-            won't be the fastest typer.
+            Equip your AI with <br className="hidden md:block" />
+            master-class skills.
           </h1>
           
           <p className="text-lg md:text-xl text-white/95 max-w-xl font-medium leading-relaxed mb-10 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-            They'll be the best system designer. <br className="hidden md:block" />
-            Inject strict architectural blueprints directly into Cursor, Claude, and Windsurf.
+            The open-source registry for agentic context. <br className="hidden md:block" />
+            Install production-ready architectures, UI tokens, and schemas instantly via the command line.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
