@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
+  const [isCopied, setIsCopied] = useState(false);
 
   useGSAP(() => {
-    // Background Image Scale-in
     gsap.from(".bg-image", {
       scale: 1.05,
       opacity: 0,
@@ -18,7 +18,6 @@ export default function Hero() {
       ease: "power3.out"
     });
 
-    // Staggered Hero Elements
     gsap.from(".hero-elem", {
       y: 40,
       opacity: 0,
@@ -28,6 +27,12 @@ export default function Hero() {
       delay: 0.6
     });
   }, { scope: container });
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("npx @istmx/skills init");
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   return (
     <div ref={container} className="relative flex-1 flex flex-col items-center justify-center w-full">
@@ -58,21 +63,31 @@ export default function Hero() {
           <div className="hero-elem flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Link 
               href="#install" 
-              className="h-11 px-8 rounded-md bg-text-link hover:bg-text-link-secondary text-white font-semibold flex items-center justify-center transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="h-11 px-8 rounded-md bg-text-link hover:bg-text-link-secondary text-white font-semibold flex items-center justify-center transition-all shadow-[0_0_15px_rgba(13,116,206,0.5)] hover:shadow-[0_0_25px_rgba(13,116,206,0.8)] active:scale-95"
             >
               Get Started
             </Link>
             
-            <div className="h-11 px-5 rounded-md bg-surface-dark/60 backdrop-blur-md border border-white/10 flex items-center justify-between gap-4 font-mono text-sm text-white/90">
-              <span className="opacity-50">$</span>
+            <button 
+              onClick={handleCopy}
+              className="h-11 px-5 rounded-md bg-surface-dark/60 hover:bg-surface-dark/80 backdrop-blur-md border border-white/10 hover:border-white/25 flex items-center justify-between gap-4 font-mono text-sm text-white/90 transition-all active:scale-95 cursor-pointer group"
+              aria-label="Copy install command"
+            >
+              <span className="opacity-50 group-hover:opacity-70 transition-opacity">$</span>
               <span>npx @istmx/skills init</span>
-              <button 
-                className="opacity-70 hover:opacity-100 transition-opacity ml-2"
-                aria-label="Copy to clipboard"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-              </button>
-            </div>
+              <div className="opacity-70 group-hover:opacity-100 transition-opacity ml-2">
+                {isCopied ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                  </svg>
+                )}
+              </div>
+            </button>
           </div>
         </div>
       </section>

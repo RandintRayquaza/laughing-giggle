@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const navItems = [
   { name: "Skills", path: "#skills" },
@@ -51,7 +51,7 @@ export default function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
             </Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                transition={{ type: "spring", stiffness: 350, damping: 30 }}
               />
             )}
           </Link>

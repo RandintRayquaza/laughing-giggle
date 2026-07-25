@@ -12,8 +12,12 @@
   - Blue CTA (`text-link` background) for high contrast against the landscape
 - [x] Built the Top Navigation (`features/landing/ui/Navbar.tsx`)
   - Converted from full-width to a floating, centered pill design
-  - Upgraded interaction quality with animated hover pills and external icons
+  - Upgraded interaction quality with animated hover pills and external icons (bouncy easing removed per user preference)
   - Added mobile responsiveness
+- [x] Refined Global Styles & Hero Micro-Interactions
+  - Changed `::selection` color to istmX deep blue (`#0d74ce`)
+  - Upgraded CTA with glowing blue box shadows and `active:scale` press feedback
+  - Rebuilt the CLI plate into a fully interactive copy button with a temporary glowing green checkmark state
 - [x] Implemented GSAP Animations
   - Added initial mount animations (Hero reveal, staggering, background scaling)
 - [x] Installed custom manual `favicon.ico` into `app/` folder
