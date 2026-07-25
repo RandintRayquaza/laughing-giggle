@@ -195,6 +195,16 @@ Never implement multiple unrelated features together.
 
 ---
 
+# Mandatory Legacy Code Purge & Model Dispatch Rules
+
+1. **Mandatory Legacy Code Clean-Up Rule**:
+   - Whenever an AI agent modifies, refactors, or replaces a feature, prompt, or function, it MUST scan the full codebase and permanently remove all dead/legacy code, unused variables, outdated prompt templates, and old fallback logic associated with that feature across all files.
+
+2. **Sequential Dedicated Model Dispatch for Blueprint Files**:
+   - The 4 context blueprint files (`agents.md`, `design.md`, `architecture.md`, `project-overview.md`) MUST be generated sequentially using dedicated high-speed provider models per file (`get_interactive_llm()`). Parallel bursting of 4 concurrent LLM calls is strictly prohibited to prevent API rate-limits and timeouts.
+
+---
+
 # Folder Structure
 
 Use Feature-Based Architecture.
@@ -473,14 +483,14 @@ Optimize obvious bottlenecks.
 
 # Progress & Error Memory Tracking
 
-Two critical memory tracking files exist in the project root:
+Two critical memory tracking files exist in the project:
 
-1. `progress.md`: Tracks completed tasks, feature statuses, and pending deliverables.
+1. `frontend/progress.md`: Tracks completed tasks, feature statuses, and pending deliverables.
 2. `memory.md`: Tracks system architecture bugs, root causes, gateway timeouts, and verified fix patterns.
 
 **Mandate for AI Agents**:
 - Before making code changes or diagnosing an error, AI agents MUST inspect `memory.md` to avoid repeating past architectural bugs (such as duplicate sequential API calls or direct list-string method invocations).
-- After fixing any meaningful bug or error, update both `progress.md` and `memory.md` immediately with the symptom, root cause, and verified resolution.
+- After fixing any meaningful bug or error, update both `frontend/progress.md` and `memory.md` immediately with the symptom, root cause, and verified resolution.
 
 ---
 
@@ -501,15 +511,13 @@ When complex logic exists, document the reasoning rather than the syntax.
 
 A file named:
 
-progress.md
+`frontend/progress.md`
 
 exists in the project.
 
-It starts empty.
-
 After completing meaningful work:
 
-Update progress.md with:
+Update `frontend/progress.md` with:
 
 - completed work
 - current status

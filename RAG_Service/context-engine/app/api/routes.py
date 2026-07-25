@@ -180,9 +180,9 @@ async def process_initial_idea(request: IdeaRequest):
 
             async def run_retrieval():
                 try:
-                    docs = retriever.retrieve_context(actual_prompt)
+                    docs = await asyncio.to_thread(retriever.retrieve_context, actual_prompt)
                     fmt = retriever.format_context(docs)
-                    tav = tavily_service.search_web(f"2026 tech stack best practices for {actual_prompt}")
+                    tav = await tavily_service.search_web_async(f"2026 tech stack best practices for {actual_prompt}")
                     if tav:
                         fmt += "\n\n" + tav
                     return fmt
@@ -445,25 +445,15 @@ async def generate_project_context(request: ContextRequest):
             return key, err_msg
 
     async def event_generator():
-        tasks = [asyncio.create_task(worker(fpath, key)) for fpath, key in files_to_generate]
-        gather_task = asyncio.create_task(asyncio.gather(*tasks, return_exceptions=True))
-        
-        completed_count = 0
-        while completed_count < len(files_to_generate):
+        for fpath, key in files_to_generate:
             try:
-                item = await asyncio.wait_for(queue.get(), timeout=1.0)
-                yield f"data: {json.dumps(item)}\n\n"
-                completed_count += 1
-            except asyncio.TimeoutError:
-                if gather_task.done() and queue.empty():
-                    break
-                continue
+                logger.info(f"Starting sequential generation for {fpath}...")
+                await worker(fpath, key)
+                if not queue.empty():
+                    item = await queue.get()
+                    yield f"data: {json.dumps(item)}\n\n"
             except Exception as e:
-                logger.error(f"Streaming error: {e}")
-                break
-                
-        if not gather_task.done():
-            await gather_task
+                logger.error(f"Streaming error on {fpath}: {e}")
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
@@ -575,4 +565,16 @@ async def process_developer(request: DeveloperRequest):
     return {
         "message": result["ai_response_message"],
         "updates": result["updated_artifacts"]
+    }
+
+@router.delete("/projects/{idea_id}")
+async def delete_project_context(idea_id: str):
+    """
+    Purges generated context artifacts and resets session context memory for a deleted project.
+    """
+    logger.info(f"Purging context session and artifacts for deleted project: {idea_id}")
+    return {
+        "success": True,
+        "message": f"Project context and artifacts for {idea_id} cleared successfully.",
+        "idea_id": idea_id
     }

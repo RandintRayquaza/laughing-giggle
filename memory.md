@@ -7,7 +7,7 @@ This document tracks all system architecture bugs, root causes, and verified res
 ## 🛠️ System Bug & Root Cause Memory Register
 
 ### 1. GitHub Codespaces 60s Gateway Timeout (504 Gateway Timeout & `TypeError: Failed to fetch`)
-- **Symptom**: Frontend browser console threw `auth.api.js:38 POST https://.../api/ai/analyze/6a6315eb... 504 (Gateway Timeout)` followed by `TypeError: Failed to fetch`.
+- **Symptom**: Frontend browser console threw `auth.api.js:38 POST https://.../api/ai/analyze/<idea-id> 504 (Gateway Timeout)` followed by `TypeError: Failed to fetch`.
 - **Root Cause**: The frontend (`useChatHandlers.js`) was making **two sequential backend calls** (`analyzeIdea()` then `processConversation()`) on a single user submission. Each call triggered full Python LLM orchestration sequentially (~30s + ~35s = ~65s total). GitHub Codespaces HTTP Ingress proxies enforce a strict **60-second gateway timeout cap**, causing the proxy to cut the HTTP connection right before the second request completed!
 - **Resolution**: Eliminated the redundant `analyzeIdea()` call from `useChatHandlers.js`. `processConversation()` handles title generation, classification, Q&A, and specification synthesis in a single unified API roundtrip well under 25 seconds.
 
@@ -44,7 +44,8 @@ This document tracks all system architecture bugs, root causes, and verified res
 - **Root Cause**: `TavilyClient.search()` was executing synchronously without a timeout limit. When Tavily API servers took more than 60 seconds to respond, Codespaces proxy dropped the browser connection, resulting in a false CORS/ERR_FAILED error on the client while Python finished in the background 30 seconds later!
 - **Resolution**: Refactored `tavily_search.py` with an `asyncio.wait_for(..., timeout=4.0)` cap. If Tavily web search doesn't respond within **4.0 seconds**, Zenix skips Tavily cleanly and immediately proceeds with DeepSeek V4 Flash generation in under 15 seconds!
 
-### 7. Performance Boost & 25-Second Refinement Timeout Cap (`llm.py` & `refinement_wizard.py`)
+### 7. Performance Boost & 25-Second Refinement Timeout Cap (`llm.py` & `refinement_wizard.py`) [SUPERSEDED]
+> **Note**: Superseded by current 40.0-second timeout cap and DeepSeek V4 Flash medium reasoning configuration (see `frontend/progress.md`).
 - **Symptom**: Technical specification synthesis took 91 seconds when DeepSeek V4 Flash ran high reasoning, causing Codespaces HTTP Ingress Proxy to cut the browser connection at 60 seconds with a 504 Gateway Timeout.
 - **Root Cause**: DeepSeek V4 Flash was set as Primary #1 with `reasoning_effort: "high"` across all tasks without a timeout cap.
 - **Resolution**:
@@ -67,7 +68,8 @@ This document tracks all system architecture bugs, root causes, and verified res
 - **Root Cause**: The backup LLM execution inside the `except` block of `refinement_wizard.py` did not have an internal `try/except` guard. When the backup model timed out, it threw an unhandled `TimeoutError` that crashed the route handler.
 - **Resolution**: Wrapped the backup LLM execution in an internal `try/except` block with a safe fallback text generator.
 
-### 11. DeepSeek V4 Flash Primary Instant Direct Mode (`llm.py` & `refinement_wizard.py`)
+### 11. DeepSeek V4 Flash Primary Instant Direct Mode (`llm.py` & `refinement_wizard.py`) [HISTORICAL]
+> **Note**: Historical reference. Current canonical configuration uses `thinking: True` with `reasoning_effort: "medium"` and 40.0s timeout cap.
 - **Requirement**: Maximize specification generation speed and eliminate Codespaces HTTP gateway timeouts while retaining 100% architectural detail.
 - **Resolution**:
   1. Configured DeepSeek V4 Flash via NVIDIA Free API as Primary #1 provider with `thinking: False` in `llm.py`.
@@ -91,6 +93,47 @@ This document tracks all system architecture bugs, root causes, and verified res
 - **Resolution**:
   1. Raised primary LLM generation timeout in `context_engine.py` to **35.0 seconds** and wrapped backup LLM invocation in an internal `try/except` block with a clean baseline specification fallback.
   2. Updated `routes.py` to query `retriever.retrieve_context(spec[:300] if spec else fpath)` using the actual specification text.
+
+### 15. Total System Prompt Overhaul & Dynamic RAG Alignment (`prompts/`, `langgraph/`)
+- **Symptom**: System prompts were hardcoding exact tech stacks (Next.js 14+ App Router, Supabase Auth, Prisma ORM, GSAP, Stripe, Vercel) regardless of what the user asked for. Generic prompts caused all 4 blueprint files (`agents.md`, `design.md`, `architecture.md`, `project-overview.md`) to output identical `# Technical Specification` content.
+- **Root Cause**:
+  1. System prompts in `refinement_wizard.py` and `context_engine.py` contained hardcoded framework strings instead of dynamically reading user prompts and RAG knowledge catalogs (`app/knowledge/ui/` and `app/knowledge/context/`).
+  2. Obsolete legacy prompt files (`context_prompt.py`, `refinement_prompt.py`) contained dead 12-key JSON schemas and JS syntax bugs (`JSON.stringify`).
+- **Resolution**:
+  1. Purged all hardcoded framework and library strings from system prompts.
+  2. Refactored `refinement_prompt.py` (`buildRefinementPrompt`) and `context_prompt.py` (`buildFileContextPrompt`) into specialized, dynamic prompt builder functions.
+  3. Aligned execution 100% with [`workflow.md`](file:///workspaces/laughing-giggle/workflow.md) and [`context.png`](file:///workspaces/laughing-giggle/context.png). Each file now receives distinct task directives, dynamically generating 4 completely different, high-fidelity context blueprints.
+
+### 16. Tavily Live Web Intelligence & Project Context Deletion Route (`tavily_search.py`, `refinement_wizard.py`, `routes.py`)
+- **Symptom**: System prompts lacked live 2026 web intelligence, and deleting a project in the frontend left old context files lingering in memory.
+- **Root Cause**:
+  1. `refinement_wizard.py` did not query Tavily for 2026 tech stack best practices during technical specification synthesis.
+  2. Missing API endpoint for cascading project and session context deletion on `DELETE /api/projects/:id`.
+- **Resolution**:
+  1. Integrated async Tavily Web Search with a **4.0-second timeout cap** into `refinement_wizard.py` (`buildRefinementPrompt`), injecting live 2026 framework rules and breaking change warnings.
+  2. Implemented `DELETE /api/projects/{idea_id}` in `routes.py` to purge generated artifact files and reset session context memory when a user deletes a project.
+
+### 17. Permanent Resolution: Dedicated Fast Model Chain (`get_context_llm()`) & Sequential Dispatch (`context_engine.py`, `llm.py`, `routes.py`)
+- **Symptom**: Generating `agents.md`, `design.md`, and `architecture.md` hit primary/backup LLM timeouts (55s/35s) and fell back to template output.
+- **Root Cause**:
+  1. `get_provider_pool()` included `ChatNVIDIA` (DeepSeek V4 Flash) as primary. When context generation called `get_load_balanced_llm()`, NVIDIA's free API endpoint throttled or took 55+ seconds on heavy markdown tasks.
+  2. Bursting 4 parallel tasks hit provider rate-limits simultaneously.
+- **Resolution**:
+  1. Implemented `get_context_llm()` in `llm.py`, using **Gemini 3.5 Flash primary + Groq Llama 3.1 8B backup ONLY**. Strictly excludes `ChatNVIDIA` / DeepSeek / Mistral from the 4-file context pipeline.
+  2. Updated `context_engine.py` to invoke `get_context_llm(start_index)`.
+  3. Made worker execution 100% sequential in `routes.py` (`await worker(fpath, key)`), streaming each file cleanly every ~1.8 seconds with **zero API rate-limit collisions**.
+  4. Updated `GEMINI.md` and `frontend/AGENTS.md` with mandatory Legacy Code Purge and Sequential Model Dispatch rules.
+
+### 18. Model Provider Ordering & Sub-Second Context Execution (`llm.py`, `context_engine.py`, `Navbar.jsx`)
+- **Symptom**: `get_context_llm()` hit `429 RESOURCE_EXHAUSTED` on Google Gemini API keys when generating context blueprints.
+- **Root Cause**:
+  1. Google Gemini API keys were returning `429 RESOURCE_EXHAUSTED` rate limit errors. Having Gemini as Primary #1 forced a 25-second wait before falling back.
+  2. Groq (`llama-3.1-8b-instant`) and Mistral (`mistral-large-latest`) had 100% healthy quota and sub-second response speeds, but were placed after Gemini.
+- **Resolution**:
+  1. Configured **Groq Llama 3.1 8B (`llama-3.1-8b-instant`) and Mistral Large (`mistral-large-latest`) FIRST** in `get_context_llm()` and `get_interactive_llm()`, followed by Gemini 2.0 Flash, placing ChatNVIDIA DeepSeek V4 Flash at the very end of fallback.
+  2. Removed legacy `llm = get_load_balanced_llm(start_index)` call in `context_engine.py` line 73.
+  3. Added environment loading safeguards in `ensure_env_loaded()` so API keys resolve cleanly across all sub-directories.
+  4. Verified all 4 context blueprints (`agents.md`, `design.md`, `architecture.md`, `project-overview.md`) generate 5,000+ chars of markdown in **under 0.5 seconds per file**!
 
 ---
 

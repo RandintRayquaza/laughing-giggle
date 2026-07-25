@@ -2,11 +2,12 @@ from typing import Annotated, Dict, Any, List
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
 from langchain_core.messages import HumanMessage, SystemMessage
-from app.core.llm import get_load_balanced_llm
+from app.core.llm import get_load_balanced_llm, get_interactive_llm, get_context_llm
 import os
 import asyncio
 from loguru import logger
 from app.core.design_knowledge import design_knowledge_engine
+from app.prompts.context_prompt import buildFileContextPrompt
 
 # --- State Definition ---
 class ArtifactState(TypedDict):
@@ -69,7 +70,6 @@ async def generate_draft(state: ArtifactState) -> Dict[str, Any]:
     
     # Load Balancer: Rotate starting provider based on target file name to distribute concurrent calls
     start_index = FILE_LOAD_BALANCER_INDEX.get(target_name.lower(), 0)
-    llm = get_load_balanced_llm(start_index)
     
     # Read UI design intelligence files directly from knowledge/ui/
     ui_knowledge = ""
@@ -97,87 +97,38 @@ async def generate_draft(state: ArtifactState) -> Dict[str, Any]:
     feedback = state.get("verification_feedback", "")
     feedback_prompt = f"\n\nREVISION FEEDBACK FROM PREVIOUS PASS:\n{feedback}\nPlease fix these issues immediately." if feedback else ""
 
-    system_prompt = f"""You are Zenix, a Staff Software Architect and Principal Design Systems Engineer (created by developer "Istm").
-Your mission is to generate the highest-fidelity, complete, and implementation-ready markdown context file for: "{target_name}".
-
-PROJECT SPECIFICATION & REQUIREMENTS:
---- SPECIFICATION ---
-{spec}
----------------------
-
---- DESIGN INTELLIGENCE & ARCHITECTURE RULES ---
-{rag_context}
-
---- REFERENCE TEMPLATE BLUEPRINT ---
-{reference_template}
------------------------------------{feedback_prompt}
-
---- DOMAIN BOUNDARY & ARCHITECTURAL REASONING DIRECTIVES ---
-1. ACCURATE DOMAIN ANALYSIS:
-   - Carefully evaluate the project specification:
-     * **Full-Stack SaaS / Web Platform**: Applications requiring user accounts, persistent user data, external API calls, dashboard analytics, or payments. MANDATE User Authentication (Email/Password + Google OAuth) and Database Schemas (Supabase/PostgreSQL or MongoDB).
-     * **Visual Portfolio / Showcase**: Personal developer sites or landing pages. Strictly BAN backend database or auth models. Specify static JSON content schemas (`projects.json`).
-     * **Mobile App**: Expo + React Native + TypeScript + NativeWind styling.
-
-
-2. DYNAMIC DESIGN SYSTEM & DUAL ANIMATION ENGINE:
-   - **ZERO HARDCODED PALETTES OR FONTS**: Dynamically generate hex colors and typography scale matrices matching the specific project domain and topic. Display fonts for headlines; Satoshi/Inter for body copy—NEVER display fonts for body prose!
-   - **DUAL MOTION ENGINE**: Use **Framer Motion (`framer-motion`)** for interactive component states, 3D card flips, tab pills, and modal overlays. Use **GSAP + ScrollTrigger** for scroll-linked page reveals & hero timelines.
-
-Follow these exact file-specific instructions:
-
-1. IF GENERATING "agents.md":
-   - STRICT BAN: DO NOT write about AI agent theory, robotics, sensors, actuators, perception, sensor arrays, or game AI!
-   - MANDATORY MEMORY FILES DIRECTIVE:
-     * Instruct the AI coding agent that upon starting work, it MUST create and maintain both `progress.md` (task/feature log & error memory) and `problem.md` (system flaw analysis & architecture fix tracking) in the project root.
-   - LIVE TECH STACK DOCS SECTION (TAVILY + REDIS SYNC):
-     * `agents.md` MUST include a dedicated section titled **"Tech Stack Documentation & Best Practices (Live Tavily Sync)"** detailing official 2026 framework rules, recommended API patterns, and breaking changes for the chosen tech stack.
-   - Set strict code standards: Component files <150 lines, screens <250 lines, stores <200 lines. List whitelisted npm packages matching the project's tech stack.
-
-2. IF GENERATING "design.md":
-   - Complete visual design system specification generated dynamically from UI Color & Typography catalogs.
-   - Document hex colors (Primary, Canvas, Surface, Border, Secondary, Accent), typography scale matrix (Display headlines vs Satoshi/Inter body prose), corner radii, container max-widths, and spacing scales.
-   - Detail Motion rules for both Framer Motion (components/flips) and GSAP (scroll timelines).
-
-3. IF GENERATING "architecture.md":
-   - Complete feature-based folder tree structure (`src/features/*`).
-   - Client component hierarchy, layout boundaries, and responsive breakpoints.
-   - For Full-Stack SaaS: Complete Database Schemas (tables/collections, fields, types, indexes) & Auth Strategy.
-   - For Portfolios: Static JSON content schemas (`projects.json`, `skills.json`).
-
-4. IF GENERATING "project-overview.md":
-   - Product vision, target audience, non-negotiable user journeys, wireframe screen specs, and core feature requirements.
-
-
-CRITICAL FORMATTING:
-- Output ONLY valid Markdown. Do not wrap in extra markdown block envelopes (no ```markdown).
-- Make the document exhaustive, detailed, technical, and complete. Zero TODOs or blank sections.
-"""
+    system_prompt = buildFileContextPrompt(target_name, spec, rag_context + ("\n" + ui_knowledge if ui_knowledge else ""), reference_template) + feedback_prompt
 
     messages = [
         SystemMessage(content=system_prompt),
-        HumanMessage(content=f"Please generate {target_name}.")
+        HumanMessage(content=f"Please generate the complete, production-grade {target_name} context file now based on the specification and design intelligence above.")
     ]
     
+    start_index = FILE_LOAD_BALANCER_INDEX.get(target_name.lower(), 0)
+    llm = get_context_llm(start_index)
+
     try:
-        logger.info(f"Invoking multi-provider LLM chain for {target_name}...")
-        response = await asyncio.wait_for(llm.ainvoke(messages), timeout=35.0)
+        logger.info(f"Invoking dedicated high-speed context LLM chain for {target_name}...")
+        response = await asyncio.wait_for(llm.ainvoke(messages), timeout=55.0)
         raw = getattr(response, "content", response)
         if isinstance(raw, list):
             raw = "\n".join([str(item.get("text", item) if isinstance(item, dict) else item) for item in raw])
         content = str(raw).strip()
     except Exception as e:
-        logger.error(f"Primary generation attempt failed for {target_name}: {e}. Retrying with backup provider...")
+        logger.error(f"Primary high-speed generation failed for {target_name}: {e}. Retrying with secondary fast provider...")
         try:
-            backup_llm = get_load_balanced_llm(start_index + 1)
-            response = await asyncio.wait_for(backup_llm.ainvoke(messages), timeout=25.0)
+            backup_llm = get_context_llm(start_index + 1)
+            response = await asyncio.wait_for(backup_llm.ainvoke(messages), timeout=35.0)
             raw = getattr(response, "content", response)
             if isinstance(raw, list):
                 raw = "\n".join([str(item.get("text", item) if isinstance(item, dict) else item) for item in raw])
             content = str(raw).strip()
         except Exception as backup_err:
-            logger.error(f"Backup generation also failed for {target_name}: {backup_err}. Using baseline draft template.")
-            content = f"# {target_name.replace('.md', '').title()}\n\n## Overview\n{refined_spec}\n\n## Specification Details\n{state.get('formatted_context', '')}"
+            logger.error(f"Backup generation failed for {target_name}: {backup_err}. Using full dynamic reference template fallback.")
+            if reference_template and len(reference_template.strip()) > 50:
+                content = f"# {target_name.replace('.md', '').title()} (`{target_name}`)\n\n{reference_template}\n\n## Project Specification Details\n{spec}"
+            else:
+                content = f"# {target_name.replace('.md', '').title()} (`{target_name}`)\n\n## Project Specification Details\n{spec}"
 
 
     

@@ -2,7 +2,7 @@ from typing import Annotated, Dict, Any, List
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
 from langchain_core.messages import HumanMessage, SystemMessage
-from app.core.llm import get_fallback_llm
+from app.core.llm import get_fallback_llm, get_load_balanced_llm
 from app.prompts.question_prompt import buildQuestionPrompt
 import os
 import json
@@ -47,78 +47,62 @@ def generate_questions(state: WizardState) -> Dict[str, Any]:
     qa_formatted = "\n".join([f"Q: {qa.get('question', '')}\nA: {qa.get('answer', '')}" for qa in history])
 
     
-    system_prompt = f"""You are Zenix, a Senior Staff Technical Architect and Product Manager.
-Analyze the user's software idea: "{idea}"
-
-CURRENT CONVERSATION HISTORY SO FAR:
-{qa_formatted if qa_formatted else "(No questions answered yet. This is the first turn.)"}
-
-REACTIVE EVALUATION RULES:
-1. DETAILED PROMPT HANDLING (INSTANT FAST-FORWARD):
-   - Read the user's initial prompt. If the prompt is ALREADY highly detailed (specifying core workflows, tech stack preferences, target audience, or explicit feature requirements), set `"is_complete": true` IMMEDIATELY on Turn 1! Do NOT force extra questions if the user has already given full instructions.
-
-2. CONTEXT AWARENESS & NO REPETITION:
-   - If the prompt is short or missing key details, ask ONE high-value clarifying question relevant to their domain.
-   - DO NOT repeat questions about features already explained in the prompt.
-
-3. DOMAIN BOUNDARIES:
-   - Full-Stack SaaS / Platform: Require authentication (Email/Password + Google OAuth) and database preferences.
-   - Portfolio / Visual Showcase: Strictly BAN database/auth questions! Ask about visual theme, skills, or hero text.
-
-4. DECIDE NEXT TURN:
-   - If essential requirements are clear (or prompt was detailed), set `"is_complete": true`.
-   - Otherwise, generate ONE clear, focused next question with 2 relevant choice options + "Let Zenix decide".
-
-
-OUTPUT FORMAT (STRICT JSON ONLY - No markdown):
-{{
-  "is_complete": false,
-  "next_question": "string (the single clear next question)",
-  "options": ["Option 1", "Option 2", "Let Zenix decide"]
-}}
-"""
+    system_prompt = buildQuestionPrompt(idea, history)
 
     messages = [
         SystemMessage(content=system_prompt),
         HumanMessage(content="Evaluate history and return the next question or completion state.")
     ]
-    
-    response = llm.invoke(messages)
-    
-    try:
-        raw = getattr(response, "content", response)
-        if isinstance(raw, list):
-            raw = "\n".join([str(item.get("text", item) if isinstance(item, dict) else item) for item in raw])
-        raw_text = str(raw).replace('```json', '').replace('```', '').strip()
 
-        start_idx = raw_text.find('{')
-        end_idx = raw_text.rfind('}')
-        if start_idx != -1 and end_idx != -1:
-            raw_text = raw_text[start_idx:end_idx+1]
-        data = json.loads(raw_text)
-        
-        is_complete = data.get("is_complete", False)
-        next_q = data.get("next_question", "")
-        opts = data.get("options", [])
-
-        if not next_q:
-            is_complete = True
-
-        if opts and "Let Zenix decide" not in opts:
-            opts.append("Let Zenix decide")
+    # Attempt 1 & Retry 2: Invocation & Parsing
+    for attempt in range(2):
+        try:
+            if attempt == 1:
+                logger.warning("Retrying PM Wizard question generation with backup LLM...")
+                current_llm = get_load_balanced_llm(1)
+            else:
+                current_llm = llm
+                
+            response = current_llm.invoke(messages)
             
-        return {
-            "next_question": next_q,
-            "options": opts,
-            "is_complete": is_complete
-        }
-    except Exception as e:
-        logger.error(f"Failed to parse next question: {e}")
-        return {
-            "next_question": "",
-            "options": [],
-            "is_complete": True
-        }
+            raw = getattr(response, "content", response)
+            if isinstance(raw, list):
+                raw = "\n".join([str(item.get("text", item) if isinstance(item, dict) else item) for item in raw])
+            raw_text = str(raw).replace('```json', '').replace('```', '').strip()
+
+            start_idx = raw_text.find('{')
+            end_idx = raw_text.rfind('}')
+            if start_idx != -1 and end_idx != -1:
+                raw_text = raw_text[start_idx:end_idx+1]
+            data = json.loads(raw_text)
+            
+            is_complete = data.get("is_complete", False)
+            next_q = data.get("next_question", "")
+            opts = data.get("options", [])
+
+            if not is_complete and not next_q:
+                next_q = "What is the primary feature or workflow of your application?"
+                opts = ["Core User Dashboard & Workflows", "Authentication & Database Setup", "Let Zenix decide"]
+
+            if opts and "Let Zenix decide" not in opts:
+                opts.append("Let Zenix decide")
+                
+            return {
+                "next_question": next_q,
+                "options": opts,
+                "is_complete": is_complete,
+                "error": False
+            }
+        except Exception as e:
+            logger.error(f"Failed to parse next question (attempt {attempt + 1}): {e}")
+
+    # Fallback response if all retries fail: return fallback question instead of empty completed state
+    return {
+        "next_question": "What is the primary feature or workflow of your application?",
+        "options": ["Core User Dashboard & Workflows", "Authentication & Database Setup", "Let Zenix decide"],
+        "is_complete": False,
+        "error": True
+    }
 
 
 
