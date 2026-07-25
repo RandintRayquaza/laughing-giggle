@@ -35,7 +35,7 @@ export default function Hero() {
   };
 
   return (
-    <div ref={container} className="relative flex-1 flex flex-col items-center justify-center w-full">
+    <div ref={container} className="relative min-h-screen flex flex-col items-center justify-center w-full overflow-hidden">
       <div className="bg-image absolute inset-0 z-0">
         <Image
           src="/image.png"

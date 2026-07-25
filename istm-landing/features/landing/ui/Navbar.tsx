@@ -41,10 +41,9 @@ export default function Navbar() {
           backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.05)",
           borderColor: isScrolled ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.05)",
         }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={{ type: "spring", stiffness: 200, damping: 25, mass: 1 }}
         className="nav-container pointer-events-auto h-14 mx-4 flex items-center justify-between px-6 backdrop-blur-xl border rounded-full shadow-lg relative overflow-hidden"
       >
-        {/* Subtle physical noise texture overlay to enhance the glass feel */}
         <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
         <Link href="/" className="text-white font-black text-lg tracking-wider flex items-center gap-1 hover:opacity-80 transition-opacity z-10">

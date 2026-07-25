@@ -31,8 +31,8 @@ The initial hero visual foundation is laid and animated. The user is currently p
 
 ## Pending Work
 - [ ] Remove all existing code comments from `Hero.tsx`, `Navbar.tsx`, and `page.tsx` to comply with the new "No Comments" rule
-- [ ] Build the documentation/commands section
-- [ ] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
+- [x] Build the documentation/commands section (Created `Showcase.tsx`)
+- [x] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
 - [ ] Build the mobile menu drawer/overlay
 
 ## Blockers
