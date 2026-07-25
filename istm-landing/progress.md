@@ -14,6 +14,7 @@
 - [x] Built the Top Navigation
   - Converted from full-width to a floating, centered pill design
   - Added mobile responsiveness (hidden links + hamburger icon on small screens)
+- [x] Installed custom manual `favicon.ico` into `app/` folder
 
 ## Current Status
 The initial hero visual foundation is laid. The user is currently planning out the content structure and specific sections.
