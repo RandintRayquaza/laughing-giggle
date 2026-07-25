@@ -23,7 +23,7 @@ The initial hero visual foundation is laid. The user is currently planning out t
 - [ ] Build the documentation/commands section
 - [ ] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
 - [ ] Build the mobile menu drawer/overlay
-- [ ] Add Framer Motion/GSAP scroll animations
+- [x] Added initial GSAP mount animations (Hero reveal, staggering, and background scaling)
 
 ## Blockers
 - None at the moment. Waiting on user's content plan.

@@ -1,0 +1,31 @@
+# ISTM Landing Page - Progress Tracker
+
+## Completed Work
+- [x] Initialized Next.js App Router project (`istm-landing`)
+- [x] Installed Shadcn UI, Tailwind CSS v4, Framer Motion, and GSAP
+- [x] Injected complete Expo design token palette into `globals.css`
+- [x] Set up typography system (Satoshi for Sans, Jetbrains for Mono)
+- [x] Created `GEMINI.md` context file for strict architectural rules
+- [x] Built the initial Hero Section (`features/landing/ui/Hero.tsx`)
+  - Full-bleed Pixel Art background image
+  - Custom bold typography without the "eyebrow badge"
+  - Blue CTA (`text-link` background) for high contrast against the landscape
+- [x] Built the Top Navigation (`features/landing/ui/Navbar.tsx`)
+  - Converted from full-width to a floating, centered pill design
+  - Added mobile responsiveness
+- [x] Implemented GSAP Animations
+  - Added initial mount animations (Hero reveal, staggering, background scaling)
+- [x] Installed custom manual `favicon.ico` into `app/` folder
+- [x] Refactored `page.tsx` to remain extremely thin and only import UI components
+
+## Current Status
+The initial hero visual foundation is laid and animated. The user is currently planning out the content structure and specific sections.
+
+## Pending Work
+- [ ] Remove all existing code comments from `Hero.tsx`, `Navbar.tsx`, and `page.tsx` to comply with the new "No Comments" rule
+- [ ] Build the documentation/commands section
+- [ ] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
+- [ ] Build the mobile menu drawer/overlay
+
+## Blockers
+- None at the moment. Waiting on user's content plan.
