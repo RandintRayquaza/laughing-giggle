@@ -49,14 +49,14 @@ export default function DatabaseStats() {
         <div className="flex flex-col md:flex-row gap-12 items-center mb-20">
           <div className="flex-1 space-y-6">
             <span className="inline-block px-4 py-1.5 rounded-full bg-text-link/10 border border-text-link/20 text-[10px] font-mono font-bold tracking-widest uppercase text-text-link shadow-sm">
-              The Intelligence Registry
+              Context As A Service
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-ink leading-[1.05]">
-              Everything you need for <br />
-              <span className="text-body opacity-50">deterministic AI.</span>
+              Raw LLMs hallucinate. <br />
+              <span className="text-text-link">ISTM engineers.</span>
             </h2>
             <p className="text-lg text-body font-medium max-w-xl">
-              ISTM isn't just a router. It's a massive, searchable database of design intelligence and architectural strictness. We inject rules into your AI to generate Awwwards-tier interfaces on the first prompt.
+              Before a single line is written, the Context Engine injects strict tokens, deterministic routing, and Awwwards-tier UI physics. We don't guess hex codes. We enforce system architecture.
             </p>
           </div>
           <div className="flex-1 w-full flex justify-end">
