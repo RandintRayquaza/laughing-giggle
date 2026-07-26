@@ -29,13 +29,14 @@
 - [x] Refactored `page.tsx` to remain extremely thin and only import UI components
 
 ## Current Status
-The initial hero visual foundation is laid and animated. The user is currently planning out the content structure and specific sections.
+The UI is being aggressively refined for Awwwards-level motion design. The "fake video" layout was scrapped in favor of a massive, scroll-driven GSAP cinematic sequence in `ContextEngine.tsx`. The `Showcase.tsx` section was deleted entirely per user direction. Legacy comments have been strictly purged from the codebase.
 
 ## Pending Work
-- [ ] Remove all existing code comments from `Hero.tsx`, `Navbar.tsx`, and `page.tsx` to comply with the new "No Comments" rule
-- [x] Build the documentation/commands section (Created `Showcase.tsx`)
-- [x] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
-- [ ] Build the mobile menu drawer/overlay
+- [x] Strip all legacy code comments from `Hero.tsx`, `Navbar.tsx`, `page.tsx`, and `ContextEngine.tsx` to strictly enforce the "No Comments" rule.
+- [x] Convert `ContextEngine.tsx` to a GSAP scroll-driven motion design piece.
+- [x] Completely remove `Showcase.tsx` from the project.
+- [ ] Build the mobile menu drawer/overlay for `Navbar.tsx`.
+- [ ] Determine the next major content block to replace the Showcase.
 
 ## Blockers
-- None at the moment. Waiting on user's content plan.
+- None at the moment. Waiting on user's content plan for the post-SystemDesign section.
