@@ -1,6 +1,5 @@
 import Navbar from "../features/landing/ui/Navbar";
 import Hero from "../features/landing/ui/Hero";
-import ContextEngine from "../features/landing/ui/ContextEngine";
 import SystemDesign from "../features/landing/ui/SystemDesign";
 import Features from "../features/landing/ui/Features";
 import DatabaseStats from "../features/landing/ui/DatabaseStats";
@@ -20,7 +19,6 @@ export default function Home() {
         <SupportedAI />
         <Features />
         <DatabaseStats />
-        <ContextEngine />
         <SystemDesign />
       </div>
       
