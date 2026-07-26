@@ -97,7 +97,7 @@ export default function SystemDesign() {
     <section 
       ref={containerRef}
       id="knowledge-graph"
-      className="relative z-20 w-full bg-canvas text-ink py-32 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.05)] border-t border-hairline overflow-hidden"
+      className="relative z-20 w-full bg-canvas text-ink py-32 border-t border-hairline overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full px-6 relative z-10 flex flex-col gap-20">
         

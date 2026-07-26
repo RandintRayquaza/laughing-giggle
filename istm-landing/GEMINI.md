@@ -21,6 +21,23 @@ This landing page must serve as a high-fidelity showcase of what the framework c
 
 ---
 
+# Available Skills & Workflows
+
+The landing page must showcase the breadth of the ISTM framework. The core skills include:
+
+- `/istm-context (prompt/idea)`: The flagship skill. It generates comprehensive project context (like the old Zenix). It uses an interactive flow: reads the initial prompt, identifies missing requirements, asks multiple-choice questions (e.g., *"What is the primary authentication method? [OAuth] [Email/Pass] [Let Zenix Decide]"*), fills the gaps, and then generates the complete context encompassing everything from UI to system design.
+- `/istm-context --codebase`: Generates context for an existing codebase.
+- `/istm-design`: Generates the `design.md` file.
+- `/istm-gsap`: Injects GSAP animation rules and standards.
+- `/istm-awwward-designer`: Uses the unified Awwwards designer workflow for premium motion and UI.
+- `/istm-schema-design`: Generates database schema design.
+- `/istm-system-design`: Generates system architecture design.
+
+Because `/istm-context` orchestrates the others to create a perfect project blueprint, it is the hero feature.
+
+
+---
+
 # Core Product Principles
 
 The product should always feel:

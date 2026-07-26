@@ -15,6 +15,13 @@
   - Converted from full-width to a floating, centered pill design
   - Added mobile responsiveness (hidden links + hamburger icon on small screens)
 - [x] Installed custom manual `favicon.ico` into `app/` folder
+- [x] Cinematic System Design Bento Grid (`SystemDesign.tsx`)
+  - Implemented a 4-column asymmetric Bento Grid for ISTM context engine architecture
+  - Added tracing animation over design tokens with Aceternity `PointerHighlight`
+  - Wrapped "Whitespace" card in an interactive `Tooltip` component
+  - Integrated `CardStack` component to showcase stacked isolation rules
+  - Added Framer Motion physics-based interactive drag to the "Physics" card
+- [x] Aceternity Component Registration: Installed `glowing-effect`, `card-stack`, `tooltip-card`, `pointer-highlight`, and `features-section-demo-1/2/3`
 
 ## Current Status
 The initial hero visual foundation is laid. The user is currently planning out the content structure and specific sections.
