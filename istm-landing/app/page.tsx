@@ -4,7 +4,7 @@ import ContextEngine from "../features/landing/ui/ContextEngine";
 import SystemDesign from "../features/landing/ui/SystemDesign";
 import Features from "../features/landing/ui/Features";
 import DatabaseStats from "../features/landing/ui/DatabaseStats";
-import TemplatesGallery from "../features/landing/ui/TemplatesGallery";
+import SupportedAI from "../features/landing/ui/SupportedAI";
 import CtaSection from "../features/landing/ui/CtaSection";
 
 export default function Home() {
@@ -17,11 +17,11 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 w-full flex flex-col">
+        <SupportedAI />
         <Features />
         <DatabaseStats />
         <ContextEngine />
         <SystemDesign />
-        <TemplatesGallery />
       </div>
       
       <CtaSection />
