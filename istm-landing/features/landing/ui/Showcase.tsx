@@ -42,14 +42,14 @@ export default function Showcase() {
     
     setIsAnimating(true);
     
-    // Animate out the old snippet
+    
     gsap.to(".code-snippet-content", {
       opacity: 0,
       y: 10,
       duration: 0.2,
       onComplete: () => {
         setActiveSkill(skill);
-        // Animate in the new snippet
+        
         gsap.to(".code-snippet-content", {
           opacity: 1,
           y: 0,

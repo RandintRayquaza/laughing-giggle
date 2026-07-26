@@ -22,7 +22,7 @@ The initial hero visual foundation is laid. The user is currently planning out t
 ## Pending Work
 - [ ] Build the documentation/commands section
 - [ ] Showcase the specific skills (`/istm-context`, `/istm-gsap`)
-- [ ] Build the mobile menu drawer/overlay
+- [x] Build the mobile menu drawer/overlay (Awwwards-level with Framer Motion)
 - [x] Added initial GSAP mount animations (Hero reveal, staggering, and background scaling)
 
 ## Blockers
