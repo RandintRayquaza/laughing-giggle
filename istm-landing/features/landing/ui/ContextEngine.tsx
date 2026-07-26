@@ -10,6 +10,7 @@ if (typeof window !== "undefined") {
 }
 
 export default function ContextEngine() {
+  const outerContainer = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
   const promptWords = "/istm-architect Build a collaborative code editor.".split(" ");
 
@@ -117,9 +118,10 @@ export default function ContextEngine() {
 
     tl.to({}, { duration: 1 })
 
-  }, { scope: container });
+  }, { scope: outerContainer });
 
   return (
+    <div ref={outerContainer} className="w-full relative">
     <section ref={container} className="relative w-full h-screen bg-canvas overflow-hidden flex items-center justify-center border-t border-hairline-strong">
       
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -215,5 +217,6 @@ export default function ContextEngine() {
 
       </div>
     </section>
+    </div>
   );
 }
