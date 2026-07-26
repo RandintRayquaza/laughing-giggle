@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { CardStack } from "@/components/ui/card-stack";
+import { Tooltip } from "@/components/ui/tooltip-card";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -34,11 +35,20 @@ const ARCHITECTURE_CARDS = [
   },
 ];
 
+const HIGHLIGHT_TEXTS = [
+  "Strict Token Interpolation.",
+  "Deterministic Routing Rules.",
+  "Hardware-Accelerated Physics.",
+  "Semantic Variable Binding."
+];
+
 export default function SystemDesign() {
   const containerRef = useRef<HTMLElement>(null);
   
   // Interaction states
   const [layoutState, setLayoutState] = useState(0);
+  const [highlightIndex, setHighlightIndex] = useState(0);
+  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const glowX = useSpring(mouseX, { stiffness: 150, damping: 20 });
@@ -49,6 +59,13 @@ export default function SystemDesign() {
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHighlightIndex((prev) => (prev + 1) % HIGHLIGHT_TEXTS.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -144,10 +161,11 @@ export default function SystemDesign() {
                 <div className="flex flex-col gap-1">
                   <h3 className="text-xl font-bold text-ink">Design Tokens</h3>
                   <PointerHighlight
+                    key={highlightIndex}
                     rectangleClassName="border-text-link"
                     pointerClassName="text-text-link"
                   >
-                    <p className="text-sm text-body-strong font-medium tracking-tight px-1">Strict Token Interpolation.</p>
+                    <p className="text-sm text-body-strong font-medium tracking-tight px-1">{HIGHLIGHT_TEXTS[highlightIndex]}</p>
                   </PointerHighlight>
                 </div>
                 <div className="flex gap-2">
@@ -189,26 +207,36 @@ export default function SystemDesign() {
           </div>
 
           {/* Card 4: Layout Rules (Spans 1 col, 1 row) */}
-          <div 
-            onClick={() => setLayoutState((prev) => (prev + 1) % 3)}
-            className="bento-card relative md:col-span-1 md:row-span-1 min-h-[250px] rounded-[2rem] border border-border/50 bg-surface-card p-2 cursor-pointer"
-          >
-            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
-            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[1.5rem] border border-hairline-soft bg-surface-card p-6 shadow-sm hover:bg-canvas-soft transition-colors">
-              <div className="flex flex-col gap-1 relative z-10 pointer-events-none">
-                <h3 className="text-xl font-bold text-ink">Whitespace</h3>
-                <p className="text-[10px] text-body font-mono">Click to iterate</p>
+          <Tooltip 
+            containerClassName="bento-card relative md:col-span-1 md:row-span-1 min-h-[250px] block w-full h-full"
+            content={
+              <div className="flex flex-col gap-1.5 font-mono text-left w-[180px]">
+                <span className="text-ink font-bold text-sm">Layout Architecture</span>
+                <span className="text-[11px] text-body">ISTM ensures AI follows strict UI grid/flex rules defined in layout.md, preventing shrinking bounds.</span>
               </div>
-              
-              <div className="flex-1 flex flex-col justify-center gap-2 relative z-10 pointer-events-none mt-4">
-                <motion.div layout className="w-full bg-body/10 rounded-md" animate={{ height: layoutState === 0 ? 30 : layoutState === 1 ? 10 : 40 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
-                <div className="flex gap-2">
-                  <motion.div layout className="bg-body/10 rounded-md" animate={{ flex: layoutState === 0 ? 1 : layoutState === 1 ? 2 : 1, height: 20 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
-                  <motion.div layout className="bg-body/10 rounded-md" animate={{ flex: layoutState === 0 ? 1 : layoutState === 1 ? 0.5 : 1, height: 20 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+            }
+          >
+            <div 
+              onClick={() => setLayoutState((prev) => (prev + 1) % 3)}
+              className="w-full h-full rounded-[2rem] border border-border/50 bg-surface-card p-2 cursor-pointer"
+            >
+              <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+              <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[1.5rem] border border-hairline-soft bg-surface-card p-6 shadow-sm hover:bg-canvas-soft transition-colors">
+                <div className="flex flex-col gap-1 relative z-10 pointer-events-none">
+                  <h3 className="text-xl font-bold text-ink">Whitespace</h3>
+                  <p className="text-[10px] text-body font-mono">Click to iterate</p>
+                </div>
+                
+                <div className="flex-1 flex flex-col justify-center gap-2 relative z-10 pointer-events-none mt-4">
+                  <motion.div layout className="w-full bg-body/10 rounded-md" animate={{ height: layoutState === 0 ? 30 : layoutState === 1 ? 10 : 40 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+                  <div className="flex gap-2">
+                    <motion.div layout className="bg-body/10 rounded-md" animate={{ flex: layoutState === 0 ? 1 : layoutState === 1 ? 2 : 1, height: 20 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+                    <motion.div layout className="bg-body/10 rounded-md" animate={{ flex: layoutState === 0 ? 1 : layoutState === 1 ? 0.5 : 1, height: 20 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Tooltip>
 
         </div>
       </div>
