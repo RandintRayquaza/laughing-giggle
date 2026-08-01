@@ -73,7 +73,7 @@ export const FollowPointer = ({
   ];
   return (
     <motion.div
-      className="absolute z-50 h-4 w-4 rounded-full"
+      className="absolute z-50 rounded-full"
       style={{
         top: y,
         left: x,
@@ -109,7 +109,7 @@ export const FollowPointer = ({
           opacity: 0,
         }}
         className={
-          "min-w-max rounded-full border border-white/20 px-2 py-1 text-[10px] uppercase font-mono tracking-widest whitespace-nowrap text-white -translate-y-full -mt-4"
+          "min-w-max rounded-full border border-white/20 px-2 py-1 text-[10px] uppercase font-mono tracking-widest whitespace-nowrap text-white -translate-y-[120%] -translate-x-[20%]"
         }
       >
         {title || `ISTM Agent`}
