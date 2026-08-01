@@ -235,7 +235,7 @@ async function main() {
   console.log(`Your AI is now operating under the ${chalk.bold('istmX')} Architecture (${response.coreSkill}).`);
   
   console.log('\n' + chalk.bold('You are now in God Mode. Try your first prompt:'));
-  console.log(chalk.cyan('> /istm build me a sleek dashboard\n'));
+  console.log(chalk.cyan(`> /${response.coreSkill} build me a sleek dashboard\n`));
   
   console.log(chalk.bold('💡 PRO TIP:') + ' You also just unlocked the istm-workflow skillset!');
   console.log('Whenever you are stuck, use these commands instead of chatting:');
