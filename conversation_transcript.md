@@ -333,3 +333,27 @@ yes this and Or should we finish templating the 4 context files in istm-architec
 
 **AI:**
 I deleted the `imc` directory. I then went through all 4 templates (`project-overview.md`, `architecture.md`, `design.md`, `agents.md`) and aggressively stripped out every single hardcoded Zenix/ScribbleBox reference, replacing them with generic `{variables}` (e.g., `{project_name}`, `{primary_font_family}`). Finally, I updated the transcript.
+
+**User:**
+see teh wokrlfow teh istm is teh skill that will spin up everythign and /istm-architecture will spin up the diegsn sytem diesgn craft form anition it wull only take motion and soem small ajjiton ebbbseu we dont need gsap and it will aoivde aeerds and some wokflwo skills we have sn ajsut liek taht awrrd will take diesgna nd animation with gsap dn stuff animat wull taek degsn and isylf iwth and degsnwill not neccyr take sgap wutnill sia d be but wwill take motioan djsut aeikks tem diegsn wil taek wokflwo and and istm will take allof wiy it so now talk only first
+
+**AI:**
+I mapped out the exact dependency graph of how the skills inherit from one another. We confirmed that `/istm` is the god-mode command, `/istm-architecture` builds standard apps (excluding heavy GSAP), and `/istm-awwward-designer` is the premium frontend engine with full animation logic.
+
+**User:**
+ye sfirts noet iit somehwer in root so we wont fofate it
+
+**AI:**
+I created `SKILL_ARCHITECTURE.md` in the root directory and saved our modular dependency graph as the ultimate source of truth.
+
+**User:**
+first see how many skils we hav elft to make
+
+**AI:**
+I scanned the directory and found that we still need to write the `SKILL.md` orchestrators for 5 core skills: `/istm`, `/istm-design`, `/istm-animate`, `/istm-system-design`, and `/istm-awwward-designer`.
+
+**User:**
+firts w compalee this /istm-architecture  still need sinartl scripts to add teh reqird skilsl with it or we do it late rfater ctareuign all the skislsl what do you say ?
+
+**AI:**
+I recommended that we create all the `SKILL.md` files first before writing the install scripts, so we know exactly what we are installing and how they behave.
