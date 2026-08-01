@@ -1,0 +1,34 @@
+---
+title: "Core Orchestrators"
+description: "The 'God Mode' Setup Skills"
+order: 3
+---
+
+# Core Orchestrators (Day-Zero)
+
+These skills are designed to be run **once per project domain** or when fundamentally pivoting the architecture. They generate the `.istm-context/` blueprints.
+
+## `/istm` (The Universal NLP Router)
+- **Use Case:** You know what you want, but you don't know which skill to use.
+- **How to Use:** <code>/istm I need a new auth feature</code>
+- **Behavior:** It acts as an intelligent dispatcher. It will parse your intent and automatically route the command to `/istm-craft`, `/istm-architecture`, or `/istm-awwward-designer`.
+
+## `/istm-architecture` (Fullstack System Design)
+- **Use Case:** Starting a new standard SaaS, Web App, or dashboard.
+- **How to Use:** <code>/istm-architecture scaffold my next.js dashboard</code>
+- **Behavior:** It executes a Discovery Gate, analyzing your domain before compiling the "4 Pillars of Truth" (`project-overview.md`, `architecture.md`, `design.md`, `agents.md`).
+
+## `/istm-awwward-designer` (Premium Frontend Engine)
+- **Use Case:** You need to build a high-end marketing site, portfolio, or landing page that requires WebGL, GSAP, or Lenis smooth scroll.
+- **How to Use:** <code>/istm-awwward-designer build the hero section</code>
+- **Behavior:** This skill physically writes code. It enforces premium aesthetics and refuses generic UI slop. It integrates motion from `/istm-animate` and tokens from `/istm-design`.
+
+## `/istm-system-design` (The Backend Brain)
+- **Use Case:** You are building APIs, database schemas, or complex backend logic.
+- **How to Use:** <code>/istm-system-design architect the user auth schema</code>
+- **Behavior:** Owns your ORM logic, API routes, and infrastructure planning. Applies smart defaults (like Postgres + Drizzle) and strictly enforces security standards.
+
+## `/istm-design` & `/istm-animate`
+- **Use Case:** Establishing foundational visual tokens (colors, typography) and motion choreography (easing curves, hardware acceleration).
+- **How to Use:** These are generally called implicitly by the master orchestrators.
+- **Behavior:** Hydrates `.istm-context/design.md` and `.istm-context/animate.md`.

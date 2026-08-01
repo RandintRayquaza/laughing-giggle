@@ -1,0 +1,44 @@
+---
+title: "Workflow Skills"
+description: "Day-to-day execution commands."
+order: 4
+---
+
+# Workflow Skills (Day-to-Day)
+
+These are the highly deterministic commands you will use daily to build, test, and ship features.
+
+## `/istm-scope` (The Planner)
+- **Use Case:** Turning a product idea into a living, coarse scope.
+- **How to Use:** <code>/istm-scope add a stripe payment integration</code>
+- **Behavior:** It plans the slices and manages the `.istm-context/scope/` directory.
+
+## `/istm-craft` (The Spec Writer)
+- **Use Case:** Designing the exact technical requirements for a feature before building it.
+- **How to Use:** <code>/istm-craft design the payment portal</code>
+- **Behavior:** It reads your global blueprints and outputs a strict technical spec in `.istm-context/specs/`.
+
+## `/istm-develop` (The Builder)
+- **Use Case:** Turning an approved spec into working code.
+- **How to Use:** <code>/istm-develop the 0014-payment-portal spec</code>
+- **Behavior:** It acts purely as a builder, adhering strictly to the spec and refusing to invent unauthorized architecture.
+
+## `/istm-test` & `/istm-check` (The Verifiers)
+- **Use Case:** Ensuring your code works and meets the spec.
+- **How to Use:** <code>/istm-check verify</code> or <code>/istm-test</code>
+- **Behavior:** Proves behavior against the spec and generates comprehensive test suites.
+
+## `/istm-debug` (The Exterminator)
+- **Use Case:** You hit a massive wall or a complex error that isn't obvious.
+- **How to Use:** <code>/istm-debug</code>
+- **Behavior:** Runs a reproduce → localize → hypothesize → test → fix loop. It makes the minimal fix and avoids scope creep.
+
+## `/istm-document` (The Prose Writer)
+- **Use Case:** Writing human-facing documentation based on real changes.
+- **How to Use:** <code>/istm-document pr</code> or <code>/istm-document changelog</code>
+- **Behavior:** Analyzes raw commits/diffs to write accurate prose without touching your code or specs.
+
+## `/istm-sync` (The Reconciler)
+- **Use Case:** You just merged a feature and need to update the AI's durable knowledge.
+- **How to Use:** <code>/istm-sync</code>
+- **Behavior:** Updates `agents.md`, reconciles the scope, and flags any specs that are now stale.
