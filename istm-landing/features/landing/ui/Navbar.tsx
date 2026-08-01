@@ -7,8 +7,8 @@ import { useGSAP } from "@gsap/react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { name: "Skills", path: "#skills" },
-  { name: "Documentation", path: "#docs" },
+  { name: "Skills", path: "/skills" },
+  { name: "Documentation", path: "https://github.com/istmX/skills" },
 ];
 
 export default function Navbar() {
@@ -113,7 +113,7 @@ export default function Navbar() {
         
         <div className="flex items-center gap-3 z-10">
           <Link 
-            href="#install"
+            href="/#install"
             className="hidden md:flex h-8 px-4 items-center justify-center rounded-full bg-text-link hover:bg-text-link-secondary text-white text-xs font-bold transition-all shadow-[0_0_10px_rgba(13,116,206,0.3)] hover:shadow-[0_0_15px_rgba(13,116,206,0.6)] active:scale-95"
           >
             Get Started
@@ -206,7 +206,7 @@ export default function Navbar() {
                 </Link>
                 
                 <Link 
-                  href="#install"
+                  href="/#install"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full py-4 flex items-center justify-center rounded-full bg-text-link hover:bg-text-link-secondary text-white text-lg font-bold transition-all shadow-[0_0_15px_rgba(13,116,206,0.3)] hover:shadow-[0_0_20px_rgba(13,116,206,0.5)] active:scale-95"
                 >

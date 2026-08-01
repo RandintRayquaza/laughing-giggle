@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useId } from "react";
 import { motion } from "motion/react";
 
 export const TextHoverEffect = ({
@@ -14,6 +14,10 @@ export const TextHoverEffect = ({
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const id = useId();
+  const textGradientId = `textGradient-${id.replace(/:/g, "")}`;
+  const revealMaskId = `revealMask-${id.replace(/:/g, "")}`;
+  const textMaskId = `textMask-${id.replace(/:/g, "")}`;
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
@@ -41,7 +45,7 @@ export const TextHoverEffect = ({
     >
       <defs>
         <linearGradient
-          id="textGradient"
+          id={textGradientId}
           gradientUnits="userSpaceOnUse"
           cx="50%"
           cy="50%"
@@ -59,7 +63,7 @@ export const TextHoverEffect = ({
         </linearGradient>
 
         <motion.radialGradient
-          id="revealMask"
+          id={revealMaskId}
           gradientUnits="userSpaceOnUse"
           r="20%"
           initial={{ cx: "50%", cy: "50%" }}
@@ -77,13 +81,13 @@ export const TextHoverEffect = ({
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
         </motion.radialGradient>
-        <mask id="textMask">
+        <mask id={textMaskId}>
           <rect
             x="0"
             y="0"
             width="100%"
             height="100%"
-            fill="url(#revealMask)"
+            fill={`url(#${revealMaskId})`}
           />
         </mask>
       </defs>
@@ -122,9 +126,9 @@ export const TextHoverEffect = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        stroke="url(#textGradient)"
+        stroke={`url(#${textGradientId})`}
         strokeWidth="0.5"
-        mask="url(#textMask)"
+        mask={`url(#${textMaskId})`}
         className="fill-transparent font-sans text-7xl font-black tracking-tighter"
       >
         {text}
