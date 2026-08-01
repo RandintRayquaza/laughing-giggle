@@ -32,6 +32,10 @@ Never use standard `ease-in` or `ease-out`. All components MUST inherit these sp
 5. **Hero Copy Refactor:** 
    Update the Hero paragraph to match the new God-Mode positioning. 
    - *Target Copy:* "The Apex Orchestrator for Agentic Development. Route prompts to specialized skills, enforce Awwwards-tier UI tokens, and inject God-mode architectures directly into your IDE."
+6. **Sponsor Page Scroll Choreography (`app/sponsor/page.tsx`):**
+   - **Hero Parallax:** As the user scrolls down, the "0 SPONSORS" hero must fade out and push backward. Use Framer Motion's `useScroll` and `useTransform` to map `scrollYProgress` to `opacity: [1, 0]`, `scale: [1, 0.9]`, and `y: [0, 150px]`.
+   - **Story Scrub (Section 2):** The massive text blocks ("The AI Dev landscape is fragmented...") must reveal dynamically based on scroll. Do not use generic `whileInView` fade-ins. Map the container's `scrollYProgress` (with `offset: ["start center", "center center"]`) to the opacity of the text, creating a smooth scrubbing reveal as they scroll.
+   - **CTA Heavy Drop (Section 3):** The final God Sponsor glowing card must scale up smoothly from `0.8` to `1` and opacity `0` to `1` precisely as its container enters the viewport, linked directly to scroll position to give it massive physical weight.
 
 ## Cleanup Mandate
 Every component that mounts a GSAP timeline or physics listener MUST explicitly kill the timeline/listener on unmount to prevent memory leaks in Next.js.
