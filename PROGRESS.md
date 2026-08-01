@@ -38,3 +38,9 @@ This document tracks the massive architectural work completed to build the ultim
 ## Next Steps
 - Write the dynamic install scripts (e.g., inside `bin/cli.js`) to intelligently stitch these completed orchestrators together into the end-user's IDE.
 - Continue refactoring the `/istm-workflow` commands (like `/audit`, `/develop`, `/debug`) to ensure they fully adopt the new Impeccable YAML structure and `.istm-context/` blueprints.
+
+## Phase 5: The Awwwards Execution Engine & Refactoring
+- **Execution Conversion (`istm-awwward-designer`)**: Rewrote the premium frontend engine to physically *write code* rather than just output blueprints. Enforced GSAP, Lenis, and strict visual aesthetics.
+- **Reference Library Flattening**: Cleaned up legacy git clone cruft inside `istm-awwward-designer` and flattened the massive `references/` documentation library for direct AI access.
+- **Blueprint Centralization**: Ensured all workflow skills strictly output their blueprints to `.istm-context/` instead of polluting the root repository.
+- **Slash Command Fix**: Identified why custom skills weren't appearing in the Antigravity CLI `/` menu (they need to be in `.gemini/skills/`).

@@ -407,3 +407,21 @@ form netx time carte pr and nee barchen and als  htisi mi sma ggeting in teh gut
 
 **AI:**
 I agreed to always use PRs and branches moving forward. I created the branch `chore/cleanup-awwwards`, deleted `.gitignore`, `README.md`, and `install.sh` from `/istm-awwward-designer`, pushed to both repos, and provided the links to open the Pull Requests. I also explained that the "Unverified" GitHub badge happens when commits lack GPG signatures.
+
+**User:**
+okay so no wwe nned to do osem owkr on skills lie ifrts one is that the thing we genarte it put thst isntde ist speic filer that si .istm-conetx now my quets i sis it okay to put ith rer or we put it root ad netx is te we nend to set soem buidne rin awwrd diegsn ist orkin not wkrin weel ww liek and ho cn awe impr eit also yo tele me
+
+**AI:**
+I confirmed that placing files in `.istm-context/` is the correct best practice to keep the root directory clean while centralizing AI context. I then proposed 3 boundaries to fix `istm-awwward-designer`: Mandatory Asset Injection (requiring Unsplash links), Content Over Structure, and defining The Code Ban to establish its role strictly as an executor.
+
+**User:**
+we cna make good eosgn wthout any asstes to but here the pint awwrd diensger hsoud not figns nay blueprint it hsoud trach ai to haow to animet a awwred webiset what anmte dwe have so it will write cdoe notjsut wriet docs
+
+**AI:**
+I realized the true vision: `istm-awwward-designer` shouldn't write docs at all. It is the ultimate **execution engine**. I rewrote its `SKILL.md` to explicitly command it to *read* the blueprints and physically *write* the GSAP/React code directly in the project. I also cleaned up its messy legacy `references/` directory so the AI can easily access technical standards.
+
+**User:**
+see this it tell swhy m aunbe to acess teh / comand here and also updat ethe @[conversation_transcript.md] @[PROGRESS.md] and also in @[skills/istm-workflow] we might have soe workflwo for backend too
+
+**AI:**
+I updated the progress and transcript files. I also realized exactly why the slash commands (`/`) aren't showing up natively in the Antigravity CLI: Custom skills must be stored in the `.gemini/skills/` directory for the IDE to auto-detect them in the slash command menu!
