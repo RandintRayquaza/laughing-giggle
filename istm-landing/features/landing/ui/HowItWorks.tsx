@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Terminal, Database, Shield, Zap, Lock, Code2 } from "lucide-react";
+import { Tooltip } from "@/components/ui/tooltip-card";
 
 const steps = [
   { 
@@ -13,7 +14,11 @@ const steps = [
     command: "$ npx @istmx/skills init\n> Injecting God Mode..."
   },
   { 
-    title: "2. Discovery Gate", 
+    title: (
+      <span className="flex items-center gap-2">
+        2. <Tooltip content="An intelligent NLP router that determines the project archetype before generating rules."><span className="underline decoration-dashed decoration-ink/30 hover:decoration-ink transition-colors cursor-help">Discovery Gate</span></Tooltip>
+      </span>
+    ),
     desc: "The engine scans your project to automatically infer architecture, skipping unnecessary questions.",
     icon: Zap,
     command: "> Scanning repository...\n> Found: Next.js, Tailwind, TS\n> Optimizing orchestrators..."
@@ -37,7 +42,11 @@ const steps = [
     command: "> Enforcing DESIGN.md tokens\n> Rejecting generic UI slop\n> Locking architectural bounds."
   },
   { 
-    title: "6. God-Tier Output", 
+    title: (
+      <span className="flex items-center gap-2">
+        6. <Tooltip content="The final state where LLMs operate deterministically within your architectural bounds."><span className="underline decoration-dashed decoration-ink/30 hover:decoration-ink transition-colors cursor-help">God-Tier Output</span></Tooltip>
+      </span>
+    ),
     desc: "Your agents now write flawless, component-driven code guided perfectly by the Context Engine.",
     icon: Code2,
     command: "/* Result */\nexport default function App() {\n  return <AwwwardsLevelUI />;\n}"

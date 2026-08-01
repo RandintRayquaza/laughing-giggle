@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
@@ -56,17 +57,19 @@ export default function Hero() {
           </h1>
           
           <p className="hero-elem text-lg md:text-xl text-white/95 max-w-xl font-medium leading-relaxed mb-10 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-            The open-source registry for agentic context. <br className="hidden md:block" />
-            Install production-ready architectures, UI tokens, and schemas instantly via the command line.
+            The Apex Orchestrator for Agentic Development. <br className="hidden md:block" />
+            Route prompts to specialized skills, enforce Awwwards-tier UI tokens, and inject God-mode architectures directly into your IDE.
           </p>
 
           <div className="hero-elem flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link 
-              href="#install" 
-              className="h-11 px-8 rounded-md bg-text-link hover:bg-text-link-secondary text-white font-semibold flex items-center justify-center transition-all shadow-[0_0_15px_rgba(13,116,206,0.5)] hover:shadow-[0_0_25px_rgba(13,116,206,0.8)] active:scale-95"
-            >
-              Get Started
-            </Link>
+            <MagneticButton>
+              <Link 
+                href="#install" 
+                className="h-11 px-8 rounded-md bg-text-link hover:bg-text-link-secondary text-white font-semibold flex items-center justify-center transition-all shadow-[0_0_15px_rgba(13,116,206,0.5)] active:scale-95"
+              >
+                Get Started
+              </Link>
+            </MagneticButton>
             
             <button 
               onClick={handleCopy}
