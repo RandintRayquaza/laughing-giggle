@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 const splitText = (text: string) => {
   return text.split(" ").map((word, i, arr) => (
     <React.Fragment key={i}>
-      <span className="inline-block overflow-hidden align-bottom pb-2">
+      <span className="inline-block align-bottom pb-2">
         <span className="word-anim inline-block will-change-transform">{word}</span>
       </span>
       {i < arr.length - 1 && <span className="inline-block">&nbsp;</span>}
@@ -49,19 +49,25 @@ export default function Manifesto() {
       duration: 1,
     }, 0);
 
-    // 2. Dynamically reveal the words as it scrolls
-    tl.fromTo(".word-anim", {
-      y: "110%",
-      opacity: 0,
-      rotate: 10,
-    }, {
-      y: "0%",
-      opacity: 1,
-      rotate: 0,
-      ease: "power2.out",
-      duration: 0.2, // Each word takes 20% of the timeline
-      stagger: { amount: 0.8 }, // Distributed across 80% of the timeline
-    }, 0.05);
+    // 2. Shattered Scatter Assembly
+    const words = gsap.utils.toArray(".word-anim");
+    words.forEach((word) => {
+      tl.fromTo(word as Element, {
+        x: () => gsap.utils.random(-800, 800),
+        y: () => gsap.utils.random(-800, 800),
+        rotation: () => gsap.utils.random(-180, 180),
+        scale: () => gsap.utils.random(0.5, 3),
+        opacity: 0,
+      }, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        opacity: 1,
+        ease: "power2.out",
+        duration: 0.8, // They will assemble across 80% of the scrub duration
+      }, 0); // All words begin their assembly at the exact start of the pin
+    });
   }, { scope: containerRef });
 
   return (

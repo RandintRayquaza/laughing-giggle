@@ -26,8 +26,9 @@ Never use standard `ease-in` or `ease-out`. All components MUST inherit these sp
    - The Manifesto section MUST employ a strict GSAP ScrollTrigger pin.
    - Set `pin: true` and `scrub: 1` on the section container. Extend scroll duration by increasing `end`.
    - The typography must translate horizontally (`xPercent: -100` or equivalent).
-   - **SplitText Scrub:** Text elements must be split into individual spans. Instead of a one-time play animation on enter, this stagger reveal MUST be baked directly into the master `ScrollTrigger` timeline with `scrub: 1`.
-   - **Scroll-Linked Assembly:** As the user scrolls vertically (which pans horizontally), the words/letters must dynamically fly into place (e.g. from `y: 110%`, `opacity: 0`, `rotate: 10`) to form the sentence, keeping the motion strictly tied to the user's scroll wheel.
+   - **Shattered Scatter Assembly:** Text elements must be split into individual `.word-anim` spans. Instead of a uniform stagger, we enforce a premium "Shattered" effect. 
+   - **Physics:** Iterate over each word and assign highly randomized vectors using `gsap.utils.random()` (`x: -800 to 800`, `y: -800 to 800`, `rotate: -180 to 180`, `scale: 0.5 to 3`, `opacity: 0`).
+   - **Scroll-Linked Scrub:** Bind every word to the master `ScrollTrigger` timeline (starting at time `0`). As the user scrolls vertically (which pans the track horizontally), the words must dynamically fly from their scattered vectors and snap perfectly into `x: 0, y: 0, rotate: 0, scale: 1, opacity: 1` to assemble the sentence.
 5. **Hero Copy Refactor:** 
    Update the Hero paragraph to match the new God-Mode positioning. 
    - *Target Copy:* "The Apex Orchestrator for Agentic Development. Route prompts to specialized skills, enforce Awwwards-tier UI tokens, and inject God-mode architectures directly into your IDE."
