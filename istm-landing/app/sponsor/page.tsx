@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Navbar from "@/features/landing/ui/Navbar";
 import Footer from "@/features/landing/ui/Footer";
