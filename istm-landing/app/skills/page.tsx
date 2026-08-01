@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "@/features/landing/ui/Navbar";
 import Footer from "@/features/landing/ui/Footer";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
-import { Carousel3D } from "@/features/skills/ui/Carousel3D";
+import { PinnedSkillsContainer } from "@/features/skills/ui/PinnedSkillsContainer";
 
 const SKILL_CATEGORIES = [
   {
@@ -47,25 +47,18 @@ export default function SkillsPage() {
     <main className="relative min-h-screen w-full bg-[#0a0a0a] overflow-x-hidden">
       <Navbar />
       
-      <div className="w-full flex flex-col items-center pt-24 pb-32">
+      <div className="w-full flex flex-col items-center pt-24 pb-0">
         
         {/* Massive Hero Text */}
-        <div className="w-full h-[300px] md:h-[500px] flex items-center justify-center cursor-default overflow-hidden relative z-0">
+        <div className="w-full h-[300px] md:h-[500px] flex items-center justify-center cursor-default overflow-hidden relative z-10">
           <div className="w-[120%] md:w-full h-full flex items-center justify-center">
             <TextHoverEffect text="SKILLS" />
           </div>
         </div>
         
-        {/* Categories */}
-        <div className="w-full max-w-7xl px-6 flex flex-col gap-40 relative z-10 mt-8">
-          {SKILL_CATEGORIES.map((cat, idx) => (
-            <div key={idx} className="flex flex-col items-center w-full">
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-16 text-center">
-                {cat.title}
-              </h2>
-              <Carousel3D items={cat.skills} />
-            </div>
-          ))}
+        {/* Scroll-Jacked Categories */}
+        <div className="w-full relative z-20">
+          <PinnedSkillsContainer categories={SKILL_CATEGORIES} />
         </div>
 
       </div>
