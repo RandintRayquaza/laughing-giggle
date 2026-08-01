@@ -29,14 +29,15 @@
 - [x] Refactored `page.tsx` to remain extremely thin and only import UI components
 
 ## Current Status
-The UI is being aggressively refined for Awwwards-level motion design. The "fake video" layout was scrapped in favor of a massive, scroll-driven GSAP cinematic sequence in `ContextEngine.tsx`. The `Showcase.tsx` section was deleted entirely per user direction. Legacy comments have been strictly purged from the codebase.
+The UI is being aggressively refined for Awwwards-level motion design. The "fake video" layout was scrapped in favor of a massive, scroll-driven GSAP cinematic sequence in `ContextEngine.tsx`. We replaced `Showcase.tsx` with `Features.tsx`, a Tier 3 Awwwards-level GSAP horizontal scrub sequence detailing ISTM's 6 core skills. We have purged "Zenix" references globally. Vercel deployment 404s and Next.js GSAP Hydration mismatch errors have been permanently resolved.
 
 ## Pending Work
-- [x] Strip all legacy code comments from `Hero.tsx`, `Navbar.tsx`, `page.tsx`, and `ContextEngine.tsx` to strictly enforce the "No Comments" rule.
+- [x] Strip all legacy code comments from codebase.
 - [x] Convert `ContextEngine.tsx` to a GSAP scroll-driven motion design piece.
 - [x] Completely remove `Showcase.tsx` from the project.
+- [x] Build `Features.tsx` as a horizontal GSAP pinned scrub (The Injection Canvas).
+- [x] Resolve `NotFoundError: Failed to execute 'insertBefore'` by isolating GSAP `pin-spacer` wrappers in `Features.tsx` and `ContextEngine.tsx`.
 - [ ] Build the mobile menu drawer/overlay for `Navbar.tsx`.
-- [ ] Determine the next major content block to replace the Showcase.
 
 ## Blockers
-- None at the moment. Waiting on user's content plan for the post-SystemDesign section.
+- None. Vercel deployment is successful and live.
