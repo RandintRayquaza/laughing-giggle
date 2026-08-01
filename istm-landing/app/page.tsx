@@ -11,14 +11,14 @@ import CtaSection from "../features/landing/ui/CtaSection";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full flex flex-col">
+    <main className="relative min-h-screen w-full">
       <Navbar />
       
       <div className="sticky top-0 w-full h-screen z-0">
         <Hero />
       </div>
 
-      <div className="relative z-10 w-full flex flex-col">
+      <div className="relative z-10 w-full">
         <SupportedAI />
         <FeaturesGrid />
         <HowItWorks />

@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}>
       <head>
       </head>
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full font-sans">
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
