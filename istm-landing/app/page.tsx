@@ -6,7 +6,7 @@ import FeaturesGrid from "../features/landing/ui/FeaturesGrid";
 import HowItWorks from "../features/landing/ui/HowItWorks";
 import SystemDesign from "../features/landing/ui/SystemDesign";
 import Manifesto from "../features/landing/ui/Manifesto";
-import Ecosystem from "../features/landing/ui/Ecosystem";
+import Footer from "../features/landing/ui/Footer";
 import CtaSection from "../features/landing/ui/CtaSection";
 
 export default function Home() {
@@ -24,10 +24,9 @@ export default function Home() {
         <HowItWorks />
         <SystemDesign />
         <Manifesto />
-        <Ecosystem />
+        <CtaSection />
+        <Footer />
       </div>
-
-      <CtaSection />
     </main>
   );
 }
