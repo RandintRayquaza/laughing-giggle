@@ -1,6 +1,9 @@
 import Navbar from "../features/landing/ui/Navbar";
 import Hero from "../features/landing/ui/Hero";
-import InstalledSkills from "../features/landing/ui/InstalledSkills";
+import ProblemSection from "../features/landing/ui/ProblemSection";
+import ParadigmShift from "../features/landing/ui/ParadigmShift";
+import SystemDesign from "../features/landing/ui/SystemDesign";
+import FlagshipSkills from "../features/landing/ui/FlagshipSkills";
 import CtaSection from "../features/landing/ui/CtaSection";
 
 export default function Home() {
@@ -13,9 +16,12 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 w-full flex flex-col">
-        <InstalledSkills />
+        <ProblemSection />
+        <ParadigmShift />
+        <SystemDesign />
+        <FlagshipSkills />
       </div>
-      
+
       <CtaSection />
     </main>
   );

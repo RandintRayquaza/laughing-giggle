@@ -107,9 +107,9 @@ export default function SystemDesign() {
             Context As A Service
           </span>
           <h2 className="knowledge-header text-5xl md:text-7xl font-black tracking-tighter text-ink leading-[1.05]">
-            Raw LLMs hallucinate.<br />
+            God-Tier Architecture.<br />
             <span className="text-text-link">
-              ISTM engineers.
+              Directly in your IDE.
             </span>
           </h2>
           <p className="knowledge-header text-xl text-body font-medium max-w-2xl mx-auto">
