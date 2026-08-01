@@ -49,6 +49,9 @@ export default function Manifesto() {
         const build = () => {
           const scrollDistance = Math.max(track.scrollWidth - window.innerWidth, 0);
           const vw = window.innerWidth;
+          
+          // Set section height to match exact scroll distance for perfect 1:1 scrub speed
+          gsap.set(container, { height: scrollDistance + window.innerHeight });
 
           // Converts an element's horizontal offset in the track into a
           // timeline time (0..D) representing "when it's roughly centered
@@ -62,8 +65,7 @@ export default function Manifesto() {
             scrollTrigger: {
               trigger: container,
               start: "top top",
-              end: () => `+=${scrollDistance}`,
-              pin: true,
+              end: "bottom bottom",
               scrub: 1,
               invalidateOnRefresh: true,
             },
@@ -134,12 +136,13 @@ export default function Manifesto() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-canvas h-[100svh] flex items-center overflow-hidden border-t border-hairline-strong"
+      className="relative w-full bg-canvas border-t border-hairline-strong"
     >
-      <div
-        ref={trackRef}
-        className="flex flex-nowrap whitespace-nowrap items-center h-full px-12 md:px-32 will-change-transform"
-      >
+      <div className="sticky top-0 w-full h-[100svh] overflow-hidden">
+        <div
+          ref={trackRef}
+          className="w-max flex flex-nowrap whitespace-nowrap items-center h-full px-12 md:px-32 will-change-transform"
+        >
         <h2 className="text-[80px] md:text-[140px] font-black text-ink tracking-tighter pr-16 md:pr-32">
           {splitChars("AI needs architectural bounds.")}
         </h2>
@@ -174,6 +177,7 @@ export default function Manifesto() {
             ensuring that every generated line of code is production-ready.
           </p>
         </div>
+      </div>
       </div>
     </section>
   );
