@@ -1,24 +1,26 @@
 "use client";
 
 import React from "react";
-import { Zap, Sparkles, Box, ShieldCheck } from "lucide-react";
+import { Box, ShieldCheck, Sparkles, Zap } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-
 import { WobbleCard } from "@/components/ui/wobble-card";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 export default function Ecosystem() {
   return (
     <section className="w-full bg-surface-dark py-[160px] px-6 lg:px-16 flex flex-col items-center justify-center text-center overflow-hidden border-t border-[#1a1a1a]">
       <div className="max-w-7xl w-full flex flex-col items-center gap-16">
         
-        <div className="space-y-6">
-          <div className="inline-block px-3 py-1.5 rounded-full bg-white/10 text-white text-[11px] font-mono font-bold tracking-widest uppercase shadow-sm">
+        <div className="flex flex-col items-center w-full">
+          <div className="inline-block px-3 py-1.5 rounded-full bg-white/10 text-white text-[11px] font-mono font-bold tracking-widest uppercase shadow-sm relative z-10 mt-6">
             Core Principles
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Engineered for Determinism.
-          </h2>
-          <p className="text-lg md:text-xl text-[#b0b4ba] max-w-2xl mx-auto font-medium leading-relaxed">
+          
+          <div className="w-full max-w-5xl h-[150px] md:h-[240px] relative -mt-6 md:-mt-12 -mb-2 md:-mb-8 z-0">
+            <TextHoverEffect text="DETERMINISM" />
+          </div>
+
+          <p className="text-lg md:text-xl text-[#b0b4ba] max-w-2xl mx-auto font-medium leading-relaxed relative z-10 mt-4 mb-8">
             Forget generic prompts. Enforce strict, God-mode architectural orchestration across your entire workflow.
           </p>
         </div>
