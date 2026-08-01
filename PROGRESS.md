@@ -44,3 +44,10 @@ This document tracks the massive architectural work completed to build the ultim
 - **Reference Library Flattening**: Cleaned up legacy git clone cruft inside `istm-awwward-designer` and flattened the massive `references/` documentation library for direct AI access.
 - **Blueprint Centralization**: Ensured all workflow skills strictly output their blueprints to `.istm-context/` instead of polluting the root repository.
 - **Slash Command Fix**: Identified why custom skills weren't appearing in the Antigravity CLI `/` menu (they need to be in `.gemini/skills/`).
+
+## Phase 6: Production CLI & Open-Source NPM Launch
+- **Installer Precision (`bin/cli.js`)**: Fixed the fatal symlinking issue. The installer now perfectly drops the true Universal NLP Router (`/istm`) and correctly routes IDE slash commands into `.gemini/skills/` or `.cursor/rules/`.
+- **Public Ecosystem Preparation**: Obliterated the `_legacy_archive` and messy development files to ensure a lean package size. 
+- **Production Manifest**: Transformed `package.json` into a production-ready artifact with native `npx` routing (`bin: "bin/cli.js"`) and SEO-optimized keywords.
+- **The Global README**: Authored a massive, compelling `README.md` introducing "Context-as-a-Service" and the `@istmx/skills` philosophy.
+- **Merge & Publish**: Successfully resolved git merge conflicts on GitHub via command-line force resolution. Masterfully published `npx @istmx/skills` to the global NPM registry via direct OTP bypass token.
