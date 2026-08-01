@@ -1,8 +1,8 @@
-# My App Project Overview
+# {project_name} Project Overview
 
 ## Product Name
 
-My App
+{project_name}
 
 ---
 

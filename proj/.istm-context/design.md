@@ -1,4 +1,4 @@
-# My App Design System, Tokens, Layout Rules, and Component Registry
+# {project_name} Design System, Tokens, Layout Rules, and Component Registry
 
 This document is the single source of truth for every interface, interaction, and component. Every design decision should reinforce clarity, consistency, and trust.
 

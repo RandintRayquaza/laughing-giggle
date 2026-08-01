@@ -24,14 +24,22 @@ async function main() {
   console.log(logo);
   console.log(chalk.dim('   The master context orchestrator for AI coding agents.\n'));
 
-  // Step 1: Harness Detection (Auto-detect default)
+  // Step 1: Harness Detection (Multi-Tier)
   const cwd = process.cwd();
   let autoDetectedHarness = '.cursorrules';
+  
+  // Tier 1: Check Integrated Terminal
+  if (process.env.TERM_PROGRAM === 'cursor') autoDetectedHarness = '.cursorrules';
+  if (process.env.TERM_PROGRAM === 'Windsurf') autoDetectedHarness = '.windsurfrules';
+  
+  // Tier 2: Check Directory Footprints
   try {
     const files = await fs.readdir(cwd);
     if (files.includes('.gemini')) autoDetectedHarness = 'GEMINI.md';
     if (files.includes('.claude')) autoDetectedHarness = 'CLAUDE.md';
     if (files.includes('.windsurf')) autoDetectedHarness = '.windsurfrules';
+    if (files.includes('.cursor')) autoDetectedHarness = '.cursorrules';
+    if (files.includes('.cline')) autoDetectedHarness = '.clinerules';
   } catch (err) {}
 
   // Step 2: The Core Interview
@@ -45,26 +53,14 @@ async function main() {
         { title: 'Cursor', description: '.cursorrules', value: '.cursorrules' },
         { title: 'Windsurf', description: '.windsurfrules', value: '.windsurfrules' },
         { title: 'Claude Code', description: 'CLAUDE.md', value: 'CLAUDE.md' },
-        { title: 'Gemini CLI', description: 'GEMINI.md', value: 'GEMINI.md' },
+        { title: 'Gemini Antigravity CLI', description: 'GEMINI.md', value: 'GEMINI.md' },
         { title: 'Roo Code / Cline', description: '.clinerules', value: '.clinerules' },
-        { title: 'GitHub Copilot', description: 'copilot-instructions.md', value: '.github/copilot-instructions.md' }
+        { title: 'GitHub Copilot', description: 'copilot-instructions.md', value: '.github/copilot-instructions.md' },
+        { title: 'OpenAI Codex', description: 'CODEX.md', value: 'CODEX.md' },
+        { title: 'Opencode', description: 'OPENCODE.md', value: 'OPENCODE.md' }
       ]
     },
-    {
-      type: 'select',
-      name: 'strategy',
-      message: 'How should we initialize the architecture?',
-      choices: [
-        { title: 'Greenfield', description: 'Start fresh from a prompt (Interactive)', value: 'greenfield' },
-        { title: 'Brownfield', description: 'Reverse-engineer the existing codebase', value: 'brownfield' }
-      ]
-    },
-    {
-      type: prev => prev === 'greenfield' ? 'text' : null,
-      name: 'projectName',
-      message: 'What is the name of this project?',
-      initial: 'My App'
-    },
+
     {
       type: 'confirm',
       name: 'installWorkflow',
@@ -73,7 +69,7 @@ async function main() {
     }
   ]);
 
-  if (!response.strategy) {
+  if (!response.targetHarness) {
     console.log(chalk.red('Installation cancelled.'));
     process.exit(1);
   }
@@ -82,8 +78,9 @@ async function main() {
 
   const targetDir = cwd;
   const contextDir = path.join(targetDir, '.istm-context');
+  const harness = response.targetHarness === 'auto' ? autoDetectedHarness : response.targetHarness;
   
-  // Step 3: Inject the Orchestrator
+  // Step 3: Inject the Orchestrator at the root
   console.log(chalk.green(`✓ Injecting Master Orchestrator into ${chalk.bold(harness)}`));
   const skillPath = path.join(SKILLS_ROOT, 'istm-architecture', 'SKILL.md');
   const targetHarnessPath = path.join(targetDir, harness);
@@ -93,29 +90,23 @@ async function main() {
     console.log(chalk.yellow(`  ⚠ Could not copy SKILL.md. Ensure it exists in the package.`));
   }
 
-  // Step 4: Inject the 4 Pillars
+  // Step 4: Inject the Pillars (Pure Installer Mode)
   console.log(chalk.green(`✓ Scaffolding .istm-context/`));
   try {
     await fs.mkdir(contextDir, { recursive: true });
   } catch (err) {}
 
   const templatesDir = path.join(SKILLS_ROOT, 'istm-architecture', 'templates');
-  const pillars = ['project-overview.md', 'architecture.md', 'design.md', 'agents.md'];
+  const pillars = ['project-overview.md', 'architecture.md', 'design.md', 'agents.md']; 
 
   for (const pillar of pillars) {
-    console.log(chalk.dim(`  - Hydrating ${pillar}`));
+    console.log(chalk.dim(`  - Dropping ${pillar}`));
     try {
       const templatePath = path.join(templatesDir, pillar);
-      let content = await fs.readFile(templatePath, 'utf-8');
-      
-      // Simple variable replacement
-      if (response.projectName) {
-        content = content.replace(/{project_name}/g, response.projectName);
-      }
-      
+      const content = await fs.readFile(templatePath, 'utf-8');
       await fs.writeFile(path.join(contextDir, pillar), content);
     } catch (err) {
-      console.log(chalk.red(`  ✗ Failed to hydrate ${pillar}: ${err.message}`));
+      console.log(chalk.red(`  ✗ Failed to drop ${pillar}: ${err.message}`));
     }
   }
 
@@ -133,7 +124,9 @@ async function main() {
   }
 
   console.log(chalk.bold.magenta('\n✨ Initialization Complete!'));
-  console.log(`Your AI is now operating under the ${chalk.bold('istmX')} architecture.\n`);
+  console.log(`Your AI is now operating under the ${chalk.bold('istmX')} architecture.`);
+  console.log(chalk.dim(`Note: We generated the core rules into ${chalk.bold(harness)}.`));
+  console.log(chalk.dim(`You can now use your AI to generate the full context.\n`));
 }
 
 main().catch(err => {

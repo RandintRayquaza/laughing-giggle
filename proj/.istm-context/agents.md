@@ -1,6 +1,6 @@
-# My App — AI Agent Working Instructions
+# {project_name} — AI Agent Working Instructions
 
-This document defines how AI coding agents should understand, architect, and implement My App.
+This document defines how AI coding agents should understand, architect, and implement {project_name}.
 
 Everything written here is considered project context.
 
@@ -181,7 +181,7 @@ Keep components focused. One responsibility. If a component grows too much, spli
 
 # File Length
 
-No source file should exceed approximately 150 lines whenever reasonably possible. If a file becomes too large, split it and extract logic.
+No source file should exceed approximately 250 lines whenever reasonably possible. If a file becomes too large, split it and extract logic.
 
 ---
 
