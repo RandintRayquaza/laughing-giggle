@@ -33,7 +33,7 @@ const steps = [
     title: "4. Harness Injection", 
     desc: "Writes directly to .cursorrules or GEMINI.md, hijacking the IDE's core instruction set.",
     icon: Shield,
-    command: "> Writing .cursorrules\n> System prompt overridden\n> AI behavior strictly bound."
+    command: "> Creating AGENTS.md\n> System prompt overridden\n> AI behavior strictly bound."
   },
   { 
     title: "5. Blueprint Lock", 
@@ -82,7 +82,7 @@ export default function HowItWorks() {
         <div className="w-full md:w-1/2 flex flex-col py-16">
           <div className="mb-24">
              <h2 className="text-ink text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Context-as-a-Service.
+              Deterministic Execution.
             </h2>
             <p className="text-body text-lg max-w-md">
               Six intelligent steps that completely redefine how your AI IDE understands your project.

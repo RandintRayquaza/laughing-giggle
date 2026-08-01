@@ -22,7 +22,12 @@ Never use standard `ease-in` or `ease-out`. All components MUST inherit these sp
 1. **Global Buttons:** Upgrade all CTAs to use the `<MagneticButton>` or `<MagneticWrapper>`. They must pull toward the user's cursor on hover using Framer Motion springs.
 2. **Context Tooltips (`tooltip-card.tsx`):** Inject these into the `HowItWorks` steps. Instead of static text, users should be able to hover over key terms (like "Discovery Gate") to see deep architectural definitions via smooth spring-based tooltips.
 3. **Card Physics:** The `FeaturesGrid` and `SystemDesign` cards must utilize `<GlowingEffect>` (already implemented) combined with `<WobbleCard>` or scale physics (`hover:scale-[1.02]`) so they physically react to the mouse.
-4. **Hero Copy Refactor:** 
+4. **Manifesto Horizontal Scroll & Split Text:** 
+   - The Manifesto section MUST employ a strict GSAP ScrollTrigger pin.
+   - Set `pin: true` and `scrub: 1` on the section container. Extend scroll duration by increasing `end`.
+   - The typography must translate horizontally (`xPercent: -100` or equivalent).
+   - **SplitText Polyfill:** Text elements must be split into word-level spans and staggered via `gsap.from`. Tokens: `y: 40`, `opacity: 0`, `ease: "power4.out"`, `stagger: 0.05`.
+5. **Hero Copy Refactor:** 
    Update the Hero paragraph to match the new God-Mode positioning. 
    - *Target Copy:* "The Apex Orchestrator for Agentic Development. Route prompts to specialized skills, enforce Awwwards-tier UI tokens, and inject God-mode architectures directly into your IDE."
 
