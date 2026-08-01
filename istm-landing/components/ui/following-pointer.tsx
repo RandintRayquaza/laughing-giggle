@@ -40,11 +40,24 @@ export const FollowerPointerCard = ({
   const handleMouseEnter = () => {
     setIsInside(true);
   };
+  
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (rect && e.touches.length > 0) {
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+      x.set(e.touches[0].clientX - rect.left + scrollX);
+      y.set(e.touches[0].clientY - rect.top + scrollY);
+    }
+  };
+
   return (
     <div
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleMouseEnter}
+      onTouchEnd={handleMouseLeave}
+      onTouchMove={handleTouchMove}
       style={{
         cursor: "pointer",
       }}
