@@ -34,7 +34,8 @@ Never use standard `ease-in` or `ease-out`. All components MUST inherit these sp
    - *Target Copy:* "The Apex Orchestrator for Agentic Development. Route prompts to specialized skills, enforce Awwwards-tier UI tokens, and inject God-mode architectures directly into your IDE."
 6. **Sponsor Page Scroll Choreography (`app/sponsor/page.tsx`):**
    - **Hero Parallax:** As the user scrolls down, the "0 SPONSORS" hero must fade out and push backward. Use Framer Motion's `useScroll` and `useTransform` to map `scrollYProgress` to `opacity: [1, 0]`, `scale: [1, 0.9]`, and `y: [0, 150px]`.
-   - **Story Scrub (Section 2):** The massive text blocks ("The AI Dev landscape is fragmented...") must reveal dynamically based on scroll. Do not use generic `whileInView` fade-ins. Map the container's `scrollYProgress` (with `offset: ["start center", "center center"]`) to the opacity of the text, creating a smooth scrubbing reveal as they scroll.
+   - **Story Scrub (Section 2 - Text Reveal):** The massive text blocks ("The AI Dev landscape is fragmented...") must reveal dynamically from the bottom. Map `scrollYProgress` so that `y` moves from `50px` (or `100px`) up to `0px` while `opacity` scrubs from `0` to `1`.
+   - **Value Grid Stagger (Section 2 - Cards):** The three impact cards (Elite Reach, Global Home, CLI Integration) must NOT appear simultaneously. They must use a staggered, bottom-up reveal. Map their container's scroll progress to trigger them in sequence, or use a staggered `whileInView` with strict easing (`[0.22, 1, 0.36, 1]`), moving from `y: 50` and `opacity: 0` to their final resting state. They should also possess a subtle 3D tilt or glow on hover.
    - **CTA Heavy Drop (Section 3):** The final God Sponsor glowing card must scale up smoothly from `0.8` to `1` and opacity `0` to `1` precisely as its container enters the viewport, linked directly to scroll position to give it massive physical weight.
 
 ## Cleanup Mandate

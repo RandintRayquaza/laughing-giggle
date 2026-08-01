@@ -29,7 +29,7 @@ export default function SponsorPage() {
     offset: ["start 80%", "center center"]
   });
   const story1Opacity = useTransform(story1Progress, [0, 1], [0, 1]);
-  const story1Y = useTransform(story1Progress, [0, 1], [50, 0]);
+  const story1Y = useTransform(story1Progress, [0, 1], [100, 0]);
 
   const story2Ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress: story2Progress } = useScroll({
@@ -37,15 +37,7 @@ export default function SponsorPage() {
     offset: ["start 80%", "center center"]
   });
   const story2Opacity = useTransform(story2Progress, [0, 1], [0, 1]);
-  const story2Y = useTransform(story2Progress, [0, 1], [50, 0]);
-
-  const gridRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: gridProgress } = useScroll({
-    target: gridRef,
-    offset: ["start 80%", "center center"]
-  });
-  const gridOpacity = useTransform(gridProgress, [0, 1], [0, 1]);
-  const gridY = useTransform(gridProgress, [0, 1], [50, 0]);
+  const story2Y = useTransform(story2Progress, [0, 1], [100, 0]);
 
   // CTA Heavy Drop
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -116,22 +108,25 @@ export default function SponsorPage() {
             </p>
           </motion.div>
           
-          <motion.div ref={gridRef} style={{ opacity: gridOpacity, y: gridY }}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-[#111] border border-white/5 p-8 rounded-3xl">
-                <h3 className="text-white text-3xl font-black mb-4">Elite Reach</h3>
-                <p className="text-white/40 text-sm">Your brand placed directly in front of top-tier engineers building the future of software.</p>
-              </div>
-              <div className="bg-[#111] border border-white/5 p-8 rounded-3xl">
-                <h3 className="text-white text-3xl font-black mb-4">Global Home</h3>
-                <p className="text-white/40 text-sm">Exclusive, permanent placement on the ISTMx landing page hero section.</p>
-              </div>
-              <div className="bg-[#111] border border-white/5 p-8 rounded-3xl">
-                <h3 className="text-white text-3xl font-black mb-4">CLI Integration</h3>
-                <p className="text-white/40 text-sm">Native mentions inside the actual developer tooling and `.istm-context` generations.</p>
-              </div>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Elite Reach", desc: "Your brand placed directly in front of top-tier engineers building the future of software." },
+              { title: "Global Home", desc: "Exclusive, permanent placement on the ISTMx landing page hero section." },
+              { title: "CLI Integration", desc: "Native mentions inside the actual developer tooling and `.istm-context` generations." }
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-[#111] border border-white/5 p-8 rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,255,255,0.05)] hover:border-white/10 cursor-default"
+              >
+                <h3 className="text-white text-3xl font-black mb-4">{card.title}</h3>
+                <p className="text-white/40 text-sm">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
 
         </div>
       </section>
