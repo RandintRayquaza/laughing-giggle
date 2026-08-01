@@ -29,11 +29,12 @@ const mdxComponents = {
   li: (props: any) => <li className="pl-2 leading-relaxed" {...props} />,
 };
 
-export default function DocPage({ params }: { params: { slug?: string[] } }) {
+export default async function DocPage(props: { params: Promise<{ slug?: string[] }> }) {
   const allDocs = getAllDocs();
+  const params = await props.params;
   
   // Resolve current slug
-  const slug = params.slug ? params.slug.join('/') : allDocs[0]?.slug;
+  const slug = params?.slug ? params.slug.join('/') : allDocs[0]?.slug;
   
   if (!slug) {
     return <div className="min-h-screen bg-black text-white p-20">No documentation found.</div>;
