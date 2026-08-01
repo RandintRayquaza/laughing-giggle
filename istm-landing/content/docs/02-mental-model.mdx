@@ -1,0 +1,20 @@
+---
+title: "The Mental Model"
+description: "How skills compose to build production software."
+order: 2
+---
+
+# The Mental Model
+
+You do not ask the AI to "build a feature". That leads to generic outputs. Instead, you orchestrate the build using a highly deterministic pipeline.
+
+## Skill Composability
+
+The true power of `@istmx/skills` lies in how the tools hand off to each other.
+
+1. **`/istm-scope`**: The Product Manager. It turns your idea into a living scope document.
+2. **`/istm-craft`**: The System Architect. It reads the scope and global blueprints, outputting a strict technical specification.
+3. **`/istm-develop`**: The Builder. It reads the specification and writes the exact code required—refusing to hallucinate unauthorized architecture.
+4. **`/istm-check`**: The QA Engineer. It verifies the code against the spec.
+
+By dividing the labor into distinct skills, the AI stays perfectly within context constraints at every step of the lifecycle.

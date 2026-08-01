@@ -9,7 +9,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 const navItems = [
   { name: "Skills", path: "/skills" },
   { name: "Sponsor", path: "/sponsor" },
-  { name: "Documentation", path: "https://github.com/istmX/skills" },
+  { name: "Documentation", path: "/docs" },
 ];
 
 export default function Navbar() {

@@ -1,0 +1,25 @@
+---
+title: "Getting Started"
+description: "Installation and setup for the ISTMx ecosystem."
+order: 1
+---
+
+# Getting Started
+
+The `@istmx/skills` ecosystem is not a library you import. It is an **Orchestration Engine** that hijacks your AI agent's harness (like Cursor, Windsurf, or Claude Code) and injects highly deterministic workflow rules.
+
+## Installation
+
+Run the CLI inside the root of your project:
+
+```bash
+npx @istmx/skills init
+```
+
+The CLI automatically detects your AI IDE and injects the master orchestrators.
+
+## What is Context-as-a-Service?
+
+Most AI coding assistants fail when building large-scale applications because they lose context. They hallucinate tech stacks, write generic code, and ignore your design system.
+
+We solve this with **Context-as-a-Service**. When you run an ISTMx orchestrator, it generates a `.istm-context/` directory in your project. This acts as the absolute single source of truth for your app's architecture and UI tokens. Every subsequent skill reads from this directory before generating a single line of code.
