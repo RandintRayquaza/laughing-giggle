@@ -27,6 +27,9 @@
   - Added initial mount animations (Hero reveal, staggering, background scaling)
 - [x] Installed custom manual `favicon.ico` into `app/` folder
 - [x] Refactored `page.tsx` to remain extremely thin and only import UI components
+- [x] Phase 1: Built "Impeccable" Context Engine (Master Orchestrator `SKILL.md` + 4 Pillars templates).
+- [x] Phase 2: Built CLI Installer (`bin/cli.js`) with Multi-Tier Harness Detection and Self-Destruct Loop.
+- [x] Phase 3: The 1-2 Punch Workflow. Gutted JSM `architect` and created lean `istm-craft` skill.
 
 ## Current Status
 The UI is being aggressively refined for Awwwards-level motion design. The "fake video" layout was scrapped in favor of a massive, scroll-driven GSAP cinematic sequence in `ContextEngine.tsx`. We replaced `Showcase.tsx` with `Features.tsx`, a Tier 3 Awwwards-level GSAP horizontal scrub sequence detailing ISTM's 6 core skills. We have purged "Zenix" references globally. Vercel deployment 404s and Next.js GSAP Hydration mismatch errors have been permanently resolved.

@@ -140,6 +140,11 @@ This document tracks all system architecture bugs, root causes, and verified res
 - **Root Cause**: Over-indexing on generic SaaS templates.
 - **Resolution**: **NEVER** use eyebrow badges in any UI design for this user. Stick to stark, confident, minimal typography.
 
+### 20. Advanced Agent Architecture Orchestration (`skills/` repository)
+- **Architecture**: Separated "Day Zero" project bootstrap (`istm-architecture`) from "Day-to-Day" feature building (`istm-craft`).
+- **Self-Consuming Bootstrap**: The CLI installer (`bin/cli.js`) drops `SKILL.md` (the orchestrator) as the root harness file (e.g., `CLAUDE.md`). When the AI runs it, it interviews the user, hydrates the blank `.istm-context/agents.md` template, and then overwrites the root harness file with the finished rulebook. The orchestrator effectively deletes itself once the project is bootstrapped.
+- **Workflow Binding**: Rewrote `istm-craft` (formerly bloated JSM `architect` skill) into an ultra-lean script that is strictly bound to reading the global `.istm-context/` blueprints before writing any feature specs into `docs/specs/`.
+
 ---
 
 ## 🔒 Agent Guidelines & Verification Protocol

@@ -331,5 +331,50 @@ I explained exactly how Impeccable's execution model maps to `@istmx/skills`: th
 **User:**
 yes this and Or should we finish templating the 4 context files in istm-architecture/templates/ (stripping out the ScribbleBox text and adding the {user_project} variables) and rmeoev imc folder and laso yah we can move now ad lets first finsh arctityre first an crate updta teh transctip too
 
+**User:**
+i ahve carted ne wofler called proj so giveme cmooan dof rthat and we doint get teh skills.md file and yah for cuersr ruls we cando ywo thigs auto srhc or mnlay liek detect onlya nd manul we giev all of teh ganets name form opencode to codex
+
 **AI:**
-I deleted the `imc` directory. I then went through all 4 templates (`project-overview.md`, `architecture.md`, `design.md`, `agents.md`) and aggressively stripped out every single hardcoded Zenix/ScribbleBox reference, replacing them with generic `{variables}` (e.g., `{project_name}`, `{primary_font_family}`). Finally, I updated the transcript.
+I built `bin/cli.js` as an interactive Node.js installer that detects the user's AI harness (Cursor, Claude Code, etc.) or lets them select it manually, acting as a "dumb dropper" that drops the templates into the right place.
+
+**User:**
+yes and make sur eit renam e'/workspaces/laughing-giggle/proj/.istm-context/agents.md' to teh socij name of th agnest not any iteh r file an dnow you get it hwo wi wnat it wil genaret .agest /cladue aegemin folder
+
+**AI:**
+I updated the CLI to properly map `agents.md` to the selected harness (e.g., `CLAUDE.md`) and drop the workflow commands into the correct folders.
+
+**User:**
+okay ayh good we can rmeome ouetr frott file whbter we wnat but wne ai will be catteign thsi efirs fo teh user ocdbe sor promtp so we wtell it o rmeone teh agtes.md to whetevry agnest thy are using how doe sthsi sound
+
+**AI:**
+I realized you engineered a brilliant **self-consuming bootstrap architecture**. The CLI drops the Master Orchestrator at the root, which runs once to interview the user and hydrate `.istm-context/agents.md`. Then, the orchestrator instructs the AI to immediately overwrite its own root file with the finished rulebook! I updated `SKILL.md` to enforce this Self-Destruct loop.
+
+**User:**
+and noen last tign we need to make our detig sytem too mcuh good hwo we willdo that how we will detect which ai user iis using and replace with soehign meenaingfull weel for nw sce ist jsut one sill so i guess its fien 'How should we initialize the architecture?'
+
+**AI:**
+I upgraded `bin/cli.js` with a Multi-Tier Harness Detection system checking `process.env.TERM_PROGRAM` and directory footprints. I also stripped the redundant "Greenfield/Brownfield" prompt since the AI handles that dynamically at runtime.
+
+**User:**
+nest si tah twe if sipn up this one so what we get lie we need disgn motion sttem diesgn an dworkflow all of them liek we talke dbfeo rso nwo e need to et up that too and also see frontend/skills/jsm/skills/skills/architect hwo we cna megar eit and use it in our skills/istm-architecture
+
+**AI:**
+I proposed a 1-2 Punch Workflow: `istm-architecture` sets up the foundational "Day Zero" blueprints, while a rewritten `/architect` skill handles the "Day-to-Day" feature design by strictly binding to those global blueprints.
+
+**User:**
+we cna name it soekhign else liek istm-build or craft whwter cool suits it and yah tahst all becseu we wont be puutin jsm kislsl at one palce we distyrbeute them whwer tey are need or create new ksills and wriet a file at root of teh wokrplc nam eit naythg j=ist to recoer dour skills prgress
+
+**AI:**
+I renamed the bloated JSM `architect` skill to `istm-craft`, completely gutted its 29KB of bloat, and wrote an ultra-lean script for it. I also created `PROGRESS.md` at the workspace root detailing our massive Phase 1, Phase 2, and Phase 3 architectural progress.
+
+**User:**
+not here abut atte rel aroot ou of skills an di ahvet got any pull request ietehr
+
+**AI:**
+I moved `PROGRESS.md` to the absolute workspace root. I also guided you through using the GitHub CLI (`gh pr create --web`) to bypass permission errors and open the Pull Request directly in your browser.
+
+**User:**
+okay nnwo wriet wveythgnn that filr we have svaed fo rmemory i ma going ot come iwth my real accout teh istmX one who onws both repo
+
+**AI:**
+I appended all the architectural progress directly into `progress.md` and `memory.md` so that the context is safely secured in the system memory for when you log back in with your real `istmX` account.
