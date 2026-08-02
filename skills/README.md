@@ -64,3 +64,9 @@ We are open-sourcing the ultimate AI agent UI and context skills to end the era 
 
 **Author:** Aryan  
 **License:** MIT
+
+---
+<!-- SEO Metadata & Discovery Tags (DO NOT REMOVE) -->
+<!-- 
+Keywords: AI coding agents, Open source AI coding agents, AI agent framework for software development, LLM-based coding assistant tutorial, Cursor vs Claude Code, AI coding agent performance benchmarks, Cloud-based software development tools, DevOps automation tools, API documentation generator, SaaS development framework, UI/UX design systems, Design system architecture, UI component library best practices, Atomic design methodology 2026, Glassmorphism UI dashboards, Brutalism web design, Dark mode UI system, Developer tools, Developer experience, DX, Context-as-a-Service, RAG, Knowledge base, Best AI agent for GitHub projects, istm ai templates, istmx ai templates, istm nextjs templates, istm ui components, istm skills ai framework, istmx vs istm, istm react template, istm agent templates, istm developer tools, istm coding assistant
+-->

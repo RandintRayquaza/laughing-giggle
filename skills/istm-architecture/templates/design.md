@@ -136,3 +136,9 @@ Always use these component structures. Duplicate component declarations are not 
 * **DON'T**: {design_dont_1}
 * **DON'T**: {design_dont_2}
 * **DON'T**: {design_dont_3}
+
+---
+<!-- 
+SEO & Context Metadata:
+Focus keywords: UI/UX design systems, Design system architecture, UI component library best practices, Atomic design methodology 2026, Glassmorphism UI dashboards, Dark mode UI system, WCAG 2.2 accessibility checklist for UI, ARIA labels for accessible components, Section 508 compliance design, premium UI, awwward-winning, motion physics, gsap, WebGL, threejs, aceternity, magic ui, radix ui, shadcn.
+-->

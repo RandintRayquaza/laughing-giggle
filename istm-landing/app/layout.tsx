@@ -24,7 +24,14 @@ export const metadata: Metadata = {
     "ui", "ux", "ui-ux", "ui/ux", "pro skill ui", "best ui", "premium ui", "design system",
     "micro-interactions", "webgl", "threejs", "aceternity", "magic ui", "radix ui", "shadcn",
     "framer motion", "locomotive scroll", "lenis", "smooth scrolling", "animation", "motion",
-    "god tier ui", "top tier ux", "awwward-winning", "award winning ui", "frontend"
+    "god tier ui", "top tier ux", "awwward-winning", "award winning ui", "frontend",
+    "build ai coding agent with python", "open source ai coding agents", "ai agent framework", 
+    "llm-based coding assistant", "cursor vs claude code", "ai agent github", 
+    "saas development framework", "design system architecture", "atomic design methodology", 
+    "glassmorphism ui dashboards", "dark mode ui system", "wcag compliant design system",
+    "istm ai templates", "istmx ai templates", "istm nextjs templates", "istm ui components",
+    "istm skills ai framework", "istmx vs istm", "istm react template", "istm agent templates",
+    "istm developer tools", "istm coding assistant"
   ],
   authors: [{ name: "Aryan", url: "https://github.com/istmX" }],
   openGraph: {
