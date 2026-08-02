@@ -8,7 +8,15 @@ import SystemDesign from "../features/landing/ui/SystemDesign";
 import Manifesto from "../features/landing/ui/Manifesto";
 import Footer from "../features/landing/ui/Footer";
 import CtaSection from "../features/landing/ui/CtaSection";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Home | ISTM Skills Framework",
+  description: "The Agentic Context Engine for AI IDEs.",
+  alternates: {
+    canonical: 'https://istmskills.vercel.app',
+  },
+};
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full">
