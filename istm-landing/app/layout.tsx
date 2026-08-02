@@ -16,10 +16,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://istmskills.vercel.app"),
   title: "ISTM Skills Framework | Agentic Context Engine",
-  description: "The ultimate Context-as-a-Service (CaaS) engine for AI IDEs. Build Awwwards-winning UI and Next.js architectures with zero hallucinations using istm skills.",
+  description: "The ultimate Agentic Orchestration Engine for AI IDEs. Build Awwwards-winning UI and Next.js architectures with zero hallucinations using istm skills.",
   keywords: [
     "istm", "istmx", "skills", "istm skills", "istm-skills", "skill", "agentic skills", "ai skills", 
-    "caas", "context-as-a-service", "zenix", "ai agents", "cursor", "windsurf", "claude code", 
+    "agentic orchestration", "orchestration engine", "zenix", "ai agents", "cursor", "windsurf", "claude code", 
     "gemini", "cline", "roo-code", "orchestrator", "prompt engineering", "awwwards", "gsap", 
     "react", "nextjs", "frontend architecture", "backend design", "developer tools", "dx",
     "ui", "ux", "ui-ux", "ui/ux", "pro skill ui", "best ui", "premium ui", "design system",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ISTM Skills Framework | Agentic Context Engine",
-    description: "The ultimate Context-as-a-Service (CaaS) engine for AI IDEs.",
+    description: "The ultimate Agentic Orchestration Engine for AI IDEs.",
     creator: "@istmX",
   },
 };
@@ -76,7 +76,7 @@ export default function RootLayout({
               "name": "@istmx/skills",
               "operatingSystem": "Windows, macOS, Linux",
               "applicationCategory": "DeveloperApplication",
-              "description": "Context-as-a-Service (CaaS) framework. The elite orchestration engine for Cursor, Windsurf, Claude Code, and Gemini. Build Awwwards-winning UI and full-stack architectures instantly.",
+              "description": "Agentic Orchestration framework. The elite orchestration engine for Cursor, Windsurf, Claude Code, and Gemini. Build Awwwards-winning UI and full-stack architectures instantly.",
               "url": "https://istmskills.vercel.app",
               "author": {
                 "@type": "Person",
