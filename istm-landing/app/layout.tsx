@@ -36,7 +36,12 @@ export const metadata: Metadata = {
     ".cursorrules alternative", "cursor rules directory", "AGENTS.md standard",
     "claude code agents.md", "windsurf rules", "aider coding agent", "zed ai editor",
     "roo code context", "cline mcp server", "cursor vs windsurf", "claude code vs cursor",
-    "best ai agent configuration", "model context protocol", "mcp context"
+    "best ai agent configuration", "model context protocol", "mcp context",
+    "awwwards level ui generator", "gsap ai coding skills", "threejs webgl ai agent",
+    "premium frontend ai architect", "ai design.md templates", "ui tokens ai generation",
+    "design system ai scaffolding", "gsap scrolltrigger ai templates", "motion physics ai rules",
+    "database schema ai architect", "nextjs fullstack ai system design", "ai code review agent",
+    "agentic debugging workflow", "ai pr generator", "agentic skills frontend", "istm-awwward-designer"
   ],
   authors: [{ name: "Aryan", url: "https://github.com/istmX" }],
   openGraph: {
