@@ -14,6 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://istmskills.vercel.app"),
   title: "ISTM Skills Framework | Agentic Context Engine",
   description: "The ultimate Context-as-a-Service (CaaS) engine for AI IDEs. Build Awwwards-winning UI and Next.js architectures with zero hallucinations using istm skills.",
   keywords: [
@@ -31,7 +32,11 @@ export const metadata: Metadata = {
     "glassmorphism ui dashboards", "dark mode ui system", "wcag compliant design system",
     "istm ai templates", "istmx ai templates", "istm nextjs templates", "istm ui components",
     "istm skills ai framework", "istmx vs istm", "istm react template", "istm agent templates",
-    "istm developer tools", "istm coding assistant"
+    "istm developer tools", "istm coding assistant",
+    ".cursorrules alternative", "cursor rules directory", "AGENTS.md standard",
+    "claude code agents.md", "windsurf rules", "aider coding agent", "zed ai editor",
+    "roo code context", "cline mcp server", "cursor vs windsurf", "claude code vs cursor",
+    "best ai agent configuration", "model context protocol", "mcp context"
   ],
   authors: [{ name: "Aryan", url: "https://github.com/istmX" }],
   openGraph: {
@@ -57,6 +62,30 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "@istmx/skills",
+              "operatingSystem": "Windows, macOS, Linux",
+              "applicationCategory": "DeveloperApplication",
+              "description": "Context-as-a-Service (CaaS) framework. The elite orchestration engine for Cursor, Windsurf, Claude Code, and Gemini. Build Awwwards-winning UI and full-stack architectures instantly.",
+              "url": "https://istmskills.vercel.app",
+              "author": {
+                "@type": "Person",
+                "name": "Aryan",
+                "url": "https://github.com/istmX"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
       </head>
       <body className="min-h-full font-sans">
         <SmoothScrollProvider>
