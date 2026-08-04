@@ -64,12 +64,19 @@ Before generating a single line of code, every agent is forced to read `.istm-co
 
 ---
 
-## 🤝 Open Source
+## 🤝 Contributing & Open Source
 
-We are open-sourcing the ultimate AI orchestration framework to end the era of generic AI code scaffolding. Join the movement and let's build beautiful, scalable software that feels human again.
+We are fully open-sourcing the ultimate AI orchestration framework to end the era of generic AI code scaffolding. If you're tired of AI building the same boring CRUD apps and want to help us push the boundaries of Agentic UI, we'd love your help!
+
+### How you can help:
+- ⭐️ **Star this repo** to help others find it and support the movement.
+- 🐛 **Report Bugs** by opening an issue.
+- 💻 **Submit PRs** to improve the skills, add new frameworks, or fix typos.
+
+Please read our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 
 **Author:** Aryan  
-**License:** MIT
+**License:** [MIT License](LICENSE)
 
 ---
 <!-- SEO Metadata & Discovery Tags (DO NOT REMOVE) -->
