@@ -1,125 +1,78 @@
-# Zenix — Developer-First AI Context Workspace
+<div align="center">
+  <h1>@istmx/skills</h1>
+  <p><b>The Elite AI Orchestration Engine for Cursor, Windsurf, Claude Code, & Gemini</b></p>
+  <a href="https://istmskills.vercel.app">Website</a> • <a href="https://istmskills.vercel.app/docs">Documentation</a> • <a href="https://github.com/istmX/skills">GitHub</a>
+</div>
 
-> **🔒 Proprietary & Closed Source**  
-> *Copyright © 2026 Zenix (ISTM). All Rights Reserved. Confidential & Proprietary Product. Unauthorized copying, distribution, or cloning is strictly prohibited.*
+<br/>
 
-Zenix transforms rough software ideas into complete, implementation-ready development context for AI coding agents (**Cursor, Windsurf, Claude Code, Gemini CLI, Roo Code**).
+Most AI coding assistants fail at scale. They lose context, hallucinate architectures, generate generic "AI slop," and completely ignore your design system.
 
-Instead of repeatedly explaining a project's architecture, dependencies, design system, and database schemas to different AI assistants, Zenix structures everything into a single, unified source of truth.
-
----
-
-## 📸 Zenix System Architecture
-
-```
-[User Software Idea / Prompt]
-               │
-               ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ 1. Reactive Q&A Engine (`pm_wizard.py`)                                │
-│    - Evaluates intent dynamically with Gemini 3.5 Flash                │
-│    - Smart 2-Turn Fast-Forward & Detailed Prompt Auto-Completion       │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ 2. Live Web Intelligence Engine (Tavily AI Sync)                       │
-│    - Fetches real-time 2026 framework rules & open-source UI specs     │
-│    - 0ms Redis Caching Strategy for high-speed performance              │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ 3. Master Specification Synthesizer (`refinement_wizard.py`)           │
-│    - Synthesizes user preferences + Q&A + UI Catalogs                  │
-│    - Dynamic design system tokens & dual motion animation standards    │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ 4. Exhaustive 4-File AI Blueprint Strategy (`context_engine.py`)       │
-│    ├── agents.md        (Strict Operating Rules, Code Limits & Tech Sync)│
-│    ├── design.md       (Hex Color Tokens, Satoshi/Bebas Neue Scales) │
-│    ├── architecture.md (Feature Tree, Auth Strategy & DB Schemas)      │
-│    └── project-overview.md (Product Vision, Journeys & Wireframes)     │
-│    - Mandates `problem.md` (System Audit) & `progress.md` (Error Log) │
-└────────────────────────────────────────────────────────────────────────┘
-```
+`@istmx/skills` is a revolutionary **Agentic Orchestration Framework**. It hijacks your AI agent's environment (via `.cursorrules`, `.cline`, or `AGENTS.md`) and injects a deterministic orchestration engine. By enforcing strict system design boundaries and premium UI/UX rules, it forces your LLM to write modular, production-ready blueprints before it ever touches a line of code.
 
 ---
 
-## 🌟 Core Product Features
+## ⚡ Quick Start
 
+Initialize the framework in your project root:
+
+```bash
+npx @istmx/skills init
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                          ZENIX PRODUCT SUITE                            │
-├──────────────────────────────┬──────────────────────────────────────────┤
-│ ⚡ AI Context Blueprint Engine│ Generates an exhaustive 4-file Markdown   │
-│                              │ suite (agents.md, design.md, etc.) to    │
-│                              │ eliminate code drift across AI tools.    │
-├──────────────────────────────┼──────────────────────────────────────────┤
-│ 🎮 Interactive AI Playground │ Real-time design system sandbox to tweak │
-│                              │ tokens, preview HTML/CSS live, and export│
-│                              │ DESIGN.md specifications via slide-over. │
-├──────────────────────────────┼──────────────────────────────────────────┤
-│ 📋 Bento Task Control Boards │ Decomposes product blueprints into       │
-│                              │ step-by-step implementation missions.    │
-├──────────────────────────────┼──────────────────────────────────────────┤
-│ 🌐 Creator Community & Decks │ Browse, follow, fork, and share verified │
-│                              │ project blueprints and design templates. │
-├──────────────────────────────┼──────────────────────────────────────────┤
-│ 🧠 Dual Memory Tracking      │ Mandates `progress.md` (feature log) and │
-│                              │ `problem.md` (audit & error memory log). │
-├──────────────────────────────┼──────────────────────────────────────────┤
-│ 🛡️ Developer-First Security  │ Firebase Admin SDK, JWT session tokens,  │
-│                              │ rate-limiting, and RBAC user permissions.│
-└──────────────────────────────┴──────────────────────────────────────────┘
-```
+
+The CLI automatically detects your IDE (Cursor, Windsurf, Roo Code, GitHub Copilot) and instantly upgrades your AI's reasoning capabilities by injecting the master orchestrator.
 
 ---
 
-## ⚡ The 4-File Blueprint Strategy
+## 🧠 The Orchestrators (God Mode)
 
-Zenix generates 4 consolidated Markdown context documents engineered to eliminate AI code drift:
+These master brains structure your entire application.
 
-```
-src/
-├── agents.md             # Operating rules, code standards (<150 lines/file), Tavily 2026 Tech Sync
-├── design.md             # Hex color tokens, typography scale matrix, motion blueprints
-├── architecture.md       # Feature-based folder tree (src/features/*), Auth & DB schemas
-└── project-overview.md   # Product vision, non-negotiable user journeys & screen inventory
-```
-
----
-
-## 🏗️ Codebase Architecture
-
-Zenix follows **Feature-Based Architecture** to keep the codebase modular, readable, and highly maintainable:
-
-```
-src/
-├── Pages/               # Ultra-thin routing pages (Zero business logic, API calls, or state)
-├── features/            # Standalone product modules
-│   ├── auth/            # Auth API, hooks, store, and UI components
-│   ├── project/         # Project workspace, chat handlers, and context flow
-│   ├── playground/      # Interactive design sandbox & LiveSandbox sections
-│   ├── artifacts/       # Context blueprint drawer & file generators
-│   └── profile/         # User profiles, avatar updates, and public showcases
-├── shared/              # Reusable design components, hooks, layout wrappers, and utilities
-└── lib/                 # Core engine services & client utilities
-```
+| Orchestrator | Domain | Description |
+|---|---|---|
+| **`/istm`** | Universal | The apex NLP router. Analyzes your prompt and dynamically routes execution to the best skill in the ecosystem. |
+| **`/istm-architecture`** | Full-Stack | The master Day-Zero planner. Establishes the "4 Pillars of Truth" (`project-overview.md`, `architecture.md`, `design.md`, `agents.md`). |
+| **`/istm-awwward-designer`** | Premium UI | Builds Awwwards-winning frontend marketing sites. Enforces GSAP, WebGL, Lenis smooth scrolling, and strict typography. |
+| **`/istm-system-design`** | Backend | The infrastructure architect. Owns database schemas, API routing, and backend stack configuration (PostgreSQL, Prisma, Drizzle). |
+| **`/istm-design`** | Design System | Establishes foundational design tokens (colors, typography). Strictly forbids generic "AI slop" CSS. |
+| **`/istm-animate`** | Motion | The hardware-accelerated motion orchestrator. Handles advanced choreography and GSAP timelines. |
 
 ---
 
-## 🔒 License & Access Notice
+## 🛠️ The Workflows (Day-to-Day)
 
-**Confidential & Proprietary Product**  
-Zenix is a private software suite owned by **ISTM**. 
+Stop chatting blindly with your AI. Use these deterministic commands to execute precise actions:
 
-- Unauthorized cloning, reverse engineering, redistribution, or commercial use is strictly prohibited.
-- Access to this repository is restricted to authorized contributors and enterprise team members only.
+- **`/istm-scope`**: Turns a raw product idea into a living, coarse scope.
+- **`/istm-craft`**: Writes a detailed technical spec strictly bound to your blueprints, preventing hallucinations.
+- **`/istm-develop`**: The execution engine. Autonomously writes clean code based on the specifications.
+- **`/istm-test`**: Generates comprehensive test suites for new features or fixes.
+- **`/istm-check`**: Pre-merge code review. Verifies behavior against the spec and confirms logic.
+- **`/istm-audit`**: Scans the codebase for tech debt, architectural drift, and unused code.
+- **`/istm-debug`**: Hunts down root causes, fixes code, and writes regression tests.
+- **`/istm-document`**: Analyzes commits/diffs to auto-generate PR descriptions, changelogs, and postmortems.
+- **`/istm-sync`**: Reconciles scope and updates the durable knowledge base after shipping a feature.
 
 ---
 
-*Copyright © 2026 Zenix (ISTM). All Rights Reserved.*
+## 📁 The `.istm-context` Architecture
 
+We believe in **Blueprint Centralization** and Deterministic Execution. 
+When your AI runs an orchestrator, it generates a `.istm-context/` directory in your project. This is the ultimate source of truth. 
+
+Before generating a single line of code, every agent is forced to read `.istm-context/design.md` (for exact UI tokens) and `.istm-context/architecture.md` (to verify the stack), ensuring perfect alignment and zero hallucinations.
+
+---
+
+## 🤝 Open Source
+
+We are open-sourcing the ultimate AI orchestration framework to end the era of generic AI code scaffolding. Join the movement and let's build beautiful, scalable software that feels human again.
+
+**Author:** Aryan  
+**License:** MIT
+
+---
+<!-- SEO Metadata & Discovery Tags (DO NOT REMOVE) -->
+<!-- 
+Keywords: AI coding agents, Open source AI coding agents, AI agent framework for software development, LLM-based coding assistant tutorial, Cursor vs Claude Code, AI coding agent performance benchmarks, Cloud-based software development tools, DevOps automation tools, API documentation generator, SaaS development framework, UI/UX design systems, Design system architecture, UI component library best practices, Atomic design methodology 2026, Glassmorphism UI dashboards, Brutalism web design, Dark mode UI system, Developer tools, Developer experience, DX, Deterministic Execution, Orchestration Engine, RAG, Knowledge base, Best AI agent for GitHub projects, istm ai templates, istmx ai templates, istm nextjs templates, istm ui components, istm skills ai framework, istmx vs istm, istm react template, istm agent templates, istm developer tools, istm coding assistant, .cursorrules alternative, cursor rules directory, AGENTS.md standard, claude code agents.md, windsurf rules, aider coding agent, zed ai editor, roo code context, cline mcp server, cursor vs windsurf, claude code vs cursor, best ai agent configuration, model context protocol, awwwards level ui generator, gsap ai coding skills, threejs webgl ai agent, premium frontend ai architect, ai design.md templates, ui tokens ai generation, design system ai scaffolding, gsap scrolltrigger ai templates, motion physics ai rules, database schema ai architect, nextjs fullstack ai system design, ai code review agent, agentic debugging workflow, ai pr generator, agentic skills frontend, istm-awwward-designer
+-->
