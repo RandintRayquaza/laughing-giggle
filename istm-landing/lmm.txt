@@ -47,5 +47,8 @@ Instead of one massive file that causes compute timeouts, @istmx/skills generate
 ## The Sponsor Tier
 This open-source framework offers a premium "God Sponsor" tier, capturing enterprise leads who want elite CLI integration and specialized reach across the AI developer ecosystem.
 
+## SEO & Routing Architecture
+- The Next.js App Router natively powers discoverability via `app/sitemap.ts` and `app/robots.ts`. Static `.xml` and `.txt` counterparts in `public/` are intentionally avoided to ensure perfect Google Search Console compatibility and correct dynamic HTTP headers.
+
 ---
 *Generated for LLMs and AI Agents interacting with the @istmx/skills repository.*

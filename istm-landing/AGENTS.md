@@ -157,3 +157,11 @@ A task is complete only when:
 - Components are reusable (< 150 lines)
 - GSAP/Framer Motion animations are 60fps and bug-free
 - `progress.md` is updated
+
+---
+
+# SEO & Discoverability
+
+- The project uses Next.js Metadata API for SEO routing.
+- Do NOT use static `public/sitemap.xml` or `public/robots.txt`.
+- ALWAYS use dynamic `app/sitemap.ts` and `app/robots.ts` to ensure Google Search Console and crawlers receive the correct headers and dynamic routes.
