@@ -1,0 +1,51 @@
+# @istmx/skills - Context-as-a-Service Engine
+> The Elite AI Orchestration Engine for Cursor, Windsurf, Claude Code, and Gemini.
+
+## What is @istmx/skills?
+@istmx/skills (formerly Zenix) is a God-Tier AI Agent orchestrator. It solves the biggest problem with AI coding agents: they suffer from "Lost in the Middle" syndrome, hallucinate tech stacks, and generate generic "AI slop" when designing UI.
+
+By injecting a highly structured `.istm-context` directly into your IDE's AI harness (like `.cursorrules` or `GEMINI.md`), @istmx/skills acts as a Context-as-a-Service (CaaS) platform. It forces your AI to read deterministic blueprints, strictly typed schemas, and exact design tokens before writing a single line of code.
+
+## The CLI Installer
+Users initialize the environment by running:
+`npx @istmx/skills init`
+
+This installer:
+1. Detects the IDE (`.cursor`, `.claude`, `.gemini`, `.cline`).
+2. Drops the Master Orchestrator into the root directory.
+3. Automatically maps and routes the AI to the `.istm-context/` blueprints.
+4. Intercepts raw prompts to build a customized stack architecture.
+
+## The 4 Pillars of Truth
+Instead of one massive file that causes compute timeouts, @istmx/skills generates 4 modular context blueprints:
+1. `agents.md`: The infinite memory loop and rulebook.
+2. `project-overview.md`: Business logic, core features, and domain scope.
+3. `architecture.md`: System design, frameworks (Next.js), and APIs.
+4. `design.md`: UX strategy, strict token logic, and typography.
+
+## Core Orchestrators (The God Modes)
+- `/istm`: The Universal NLP Router. Evaluates raw prompts and delegates to the correct sub-skill.
+- `/istm-architecture`: The master architect for standard SaaS and Web Apps. Builds the 4 pillars.
+- `/istm-awwward-designer`: The premium frontend engine. Combines GSAP, Lenis, WebGL, and high-end design into executable code.
+- `/istm-system-design`: The backend brain. Designs databases, schemas, and strictly-typed ORM logic.
+- `/istm-design`: The visual token core. Enforces exact typography and colors.
+- `/istm-animate`: Hardware-accelerated motion orchestrator.
+
+## Day-to-Day Workflow Skills
+- `/istm-craft`: The 1-2 punch workflow. Reads context and architects a feature spec.
+- `/istm-develop`: Reads the spec and writes the code.
+- `/istm-audit`: Reviews code against the blueprints.
+- `/istm-debug`: Root-cause analysis and verifiable bug fixing.
+- `/istm-test`: Test generation and coverage validation.
+
+## Architectural Principles
+1. **Anti-Slop Validation**: Generic design presets (like "Brutalism" or "Minimal") are banned. The AI must construct bespoke UI utilizing design tokens.
+2. **Execution over Blueprints**: Premium skills like `/istm-awwward-designer` physically write code instead of just generating documentation.
+3. **Dynamic Documentation Parsing**: Agents scrape URL documentation to override outdated training weights (e.g., bypassing Next.js 16 deprecated methods).
+4. **Infinite Memory Loop**: Uses `progress.md` and `error-memory.md` to persist AI state across sessions, ensuring self-healing and task-tracking.
+
+## The Sponsor Tier
+This open-source framework offers a premium "God Sponsor" tier, capturing enterprise leads who want elite CLI integration and specialized reach across the AI developer ecosystem.
+
+---
+*Generated for LLMs and AI Agents interacting with the @istmx/skills repository.*
