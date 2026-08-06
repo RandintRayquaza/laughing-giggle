@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Skills | ISTM Skills Framework",
     description: "Explore the complete list of premium AI agent commands.",
-    url: "https://istmskills.vercel.app/skills",
+    url: "https://istmx.dpdns.org/skills",
   }
 };
 

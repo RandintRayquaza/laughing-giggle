@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Home | ISTM Skills Framework",
   description: "The Agentic Context Engine for AI IDEs.",
   alternates: {
-    canonical: 'https://istmskills.vercel.app',
+    canonical: 'https://istmx.dpdns.org',
   },
 };
 export default function Home() {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "God Sponsor | ISTM Skills Framework",
     description: "Reach top-tier engineers building the future of software.",
-    url: "https://istmskills.vercel.app/sponsor",
+    url: "https://istmx.dpdns.org/sponsor",
   }
 };
 

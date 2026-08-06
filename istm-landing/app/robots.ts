@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/.next/'],
     },
-    sitemap: 'https://istmskills.vercel.app/sitemap.xml',
+    sitemap: 'https://istmx.dpdns.org/sitemap.xml',
   }
 }

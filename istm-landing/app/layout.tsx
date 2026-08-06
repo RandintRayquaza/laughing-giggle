@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://istmskills.vercel.app"),
+  metadataBase: new URL("https://istmx.dpdns.org"),
   title: "ISTM Skills Framework | Agentic Context Engine",
   description: "The ultimate Agentic Orchestration Engine for AI IDEs. Build Awwwards-winning UI and Next.js architectures with zero hallucinations using istm skills.",
   keywords: [
@@ -77,7 +77,7 @@ export default function RootLayout({
               "operatingSystem": "Windows, macOS, Linux",
               "applicationCategory": "DeveloperApplication",
               "description": "Agentic Orchestration framework. The elite orchestration engine for Cursor, Windsurf, Claude Code, and Gemini. Build Awwwards-winning UI and full-stack architectures instantly.",
-              "url": "https://istmskills.vercel.app",
+              "url": "https://istmx.dpdns.org",
               "author": {
                 "@type": "Person",
                 "name": "Aryan",
