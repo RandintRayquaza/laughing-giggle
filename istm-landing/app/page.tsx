@@ -11,8 +11,8 @@ import CtaSection from "../features/landing/ui/CtaSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home | ISTM Skills Framework",
-  description: "The Agentic Context Engine for AI IDEs.",
+  title: "AI UI/UX System Design & Agentic AI Skills | ISTM",
+  description: "Take back control of your AI IDE. Generate strict .cursorrules, CLAUDE.md context packs, and structured UI systems to stop AI drift and context bloat.",
   alternates: {
     canonical: 'https://istmx.dpdns.org',
   },

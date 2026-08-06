@@ -1,10 +1,10 @@
-# @istmx/skills - Context-as-a-Service Engine
-> The Elite AI Orchestration Engine for Cursor, Windsurf, Claude Code, and Gemini.
+# @istmx/skills - AI System Design & Rules Engine
+> The Elite .cursorrules and CLAUDE.md generator for Cursor, Windsurf, Claude Code, and Gemini.
 
 ## What is @istmx/skills?
-@istmx/skills (formerly Zenix) is a God-Tier AI Agent orchestrator. It solves the biggest problem with AI coding agents: they suffer from "Lost in the Middle" syndrome, hallucinate tech stacks, and generate generic "AI slop" when designing UI.
+@istmx/skills (formerly Zenix) solves the biggest problem developers face on r/CursorAI and r/reactjs: relying on the AI to "guess" your project structure, which leads to AI drift, context bloat, and spaghetti UI code.
 
-By injecting a highly structured `.istm-context` directly into your IDE's AI harness (like `.cursorrules` or `GEMINI.md`), @istmx/skills acts as a Context-as-a-Service (CaaS) platform. It forces your AI to read deterministic blueprints, strictly typed schemas, and exact design tokens before writing a single line of code.
+By injecting a highly structured `.istm-context` directly into your IDE's AI harness (like `.cursorrules` or `CLAUDE.md`), @istmx/skills embraces the **Architect-as-Mentor** workflow. It acts as a dedicated codebase brain, forcing your AI to read deterministic system design blueprints, structured UI tokens, and accessibility contracts before writing a single line of code.
 
 ## The CLI Installer
 Users initialize the environment by running:

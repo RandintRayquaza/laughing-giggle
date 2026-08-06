@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Skills | ISTM Skills Framework",
-  description: "Explore the God Mode orchestrators and AI workflows for @istmx/skills. View the complete list of premium AI agent commands.",
+  title: "Claude Code AI Skills & Agentic Cursor Rules | ISTM",
+  description: "Explore the complete library of Agentic AI skills for Claude Code, Cursor, and Windsurf. Generate deterministic UI/UX and backend architectures.",
   keywords: ["istm skills", "ai orchestrator", "cursor rules", "agentic skills", "ai workflow", "god mode command"],
   openGraph: {
-    title: "Skills | ISTM Skills Framework",
-    description: "Explore the complete list of premium AI agent commands.",
+    title: "Claude Code AI Skills & Agentic Cursor Rules | ISTM",
+    description: "Explore the complete library of Agentic AI skills for Claude Code, Cursor, and Windsurf. Generate deterministic UI/UX and backend architectures.",
     url: "https://istmx.dpdns.org/skills",
   }
 };

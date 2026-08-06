@@ -15,10 +15,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://istmx.dpdns.org"),
-  title: "ISTM Skills Framework | Agentic Context Engine",
-  description: "The ultimate Agentic Orchestration Engine for AI IDEs. Build Awwwards-winning UI and Next.js architectures with zero hallucinations using istm skills.",
+  title: "ISTM Skills | The Ultimate .cursorrules & CLAUDE.md Engine",
+  description: "Stop relying on AI to guess your project structure. ISTM is an AI System Design orchestrator that generates strict .cursorrules, CLAUDE.md files, and structured UI tokens to prevent context bloat.",
   keywords: [
-    "istm", "istmx", "skills", "istm skills", "istm-skills", "skill", "agentic skills", "ai skills", 
+    ".cursorrules",
+    "CLAUDE.md",
+    "Cursor rules generator",
+    "AI System Design",
+    "Architect-as-Mentor",
+    "Structured UI Systems",
+    "Context Packs", "agentic skills", "ai skills", 
     "agentic orchestration", "orchestration engine", "zenix", "ai agents", "cursor", "windsurf", "claude code", 
     "gemini", "cline", "roo-code", "orchestrator", "prompt engineering", "awwwards", "gsap", 
     "react", "nextjs", "frontend architecture", "backend design", "developer tools", "dx",
@@ -76,7 +82,7 @@ export default function RootLayout({
               "name": "@istmx/skills",
               "operatingSystem": "Windows, macOS, Linux",
               "applicationCategory": "DeveloperApplication",
-              "description": "Agentic Orchestration framework. The elite orchestration engine for Cursor, Windsurf, Claude Code, and Gemini. Build Awwwards-winning UI and full-stack architectures instantly.",
+              "description": "The elite AI system design engine for Cursor, Windsurf, Claude Code, and Gemini. Stop AI drift with dynamic .cursorrules, CLAUDE.md context packs, and structured UI/UX tokens that empower the Architect-as-Mentor workflow.",
               "url": "https://istmx.dpdns.org",
               "author": {
                 "@type": "Person",
