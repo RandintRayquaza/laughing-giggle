@@ -659,3 +659,27 @@ give me url of sitemp so i cnaus ein google search consloe
 
 **AI:**
 I scoured the entire codebase and confirmed every single metadata URL was pointing to the new domain. I then provided the final, exact sitemap URL (`https://istmx.dpdns.org/sitemap.xml`) for you to submit to Google Search Console.
+
+**User:**
+what about genjutsu and design-dna? I merged them, now you can pull from main and integrate. I also want you to fully rename them to istm and have no trace of the old names.
+
+**AI:**
+I successfully extracted all `genjutsu`, `design-dna`, and Emil Kowalski intelligence and permanently rebranded them into native `@istmx/skills`. The legacy `genjutsu` repository was completely scrubbed and deleted from the workspace.
+
+**User:**
+Update the README to focus on Claude Code and remove references to specific frameworks like Next.js or Shadcn since we are 100% stack independent.
+
+**AI:**
+I rewrote the root `README.md` to be exclusively optimized for Claude Code. I erased all hardcoded tech stacks and explicitly highlighted the massive Enterprise Workflow Guardrails (Git Guardrails, Spec Gates, Workflow Tiers) and Omni-Channel capabilities.
+
+**User:**
+Commit and push the code to their respective branches, then pull back to main. Also generate a new release notes file for what we just did.
+
+**AI:**
+I committed the massive 23,927-line codebase overhaul to `feat/v2-architecture-rebrand` on both repositories, successfully checked out `main`, and re-synced them. I also drafted `RELEASE_v1.2.0.md` detailing the Dual-Mode Paradigm and the true Omni-Channel Execution capabilities of v2.0.
+
+**User:**
+Ah we ain't going to mention a bit about design-dna, no mention in the release notes.
+
+**AI:**
+I completely scrubbed the `RELEASE_v1.2.0.md` file, removing all external project names. It now proudly presents the massive Omni-Channel Architecture as pure `@istmx/skills` native intelligence.
