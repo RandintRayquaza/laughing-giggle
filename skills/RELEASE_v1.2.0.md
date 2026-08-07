@@ -1,40 +1,29 @@
-# Release Title
-v1.2.0: The Deterministic Architecture & Anti-Slop Update 🚀
+# Release: The Omni-Channel Architecture & Dual-Mode Paradigm (v1.2.0)
 
-# Release Body
+We have officially launched a massive, enterprise-grade evolution of the `@istmx/skills` AI orchestrator. 
 
-We are thrilled to announce **v1.2.0** of the `@istmx/skills` AI Orchestration Framework! This massive release fundamentally changes how AI models handle Day-Zero architecture, specification writing, and code execution. 
+This release represents a massive paradigm shift. We have completely decoupled the framework from specific tech stacks (goodbye hardcoded Next.js/React) and transformed it into a **100% Stack-Agnostic, Omni-Channel Orchestration Engine** heavily optimized for CLI-based agents like **Claude Code**. 
 
-We have completely eliminated the "Sledgehammer AI" problem (where AI blindly destroys existing folder structures) and added real-time, dynamic documentation parsing so your AI never hallucinates deprecated code again.
+Here is what's new:
 
-Here is what's new in the ultimate God Mode engine:
+## 🚀 The Dual-Mode Paradigm & Discovery Gate
+Your AI orchestrators (`/istm-design`, `/istm-animate`, `/istm-awwward-designer`) no longer blindly guess what you want. They now operate in two distinct modes:
+* **Context Phase (Day Zero):** The AI acts as an Architect. It hits the "Discovery Gate," pausing to interview you, reverse-engineer URLs/screenshots, and generate deterministic blueprints (`MASTER.md`, `design.md`).
+* **Execution Phase (Day-to-Day):** The AI acts as a lethal Executor. It bypasses blueprints, asks how you want to preview the work, and physically writes the execution code instantly.
 
-### 🏛️ Architecture & Scaffolding (`/istm-architecture`)
-- **Just-In-Time Scaffolding:** The AI is now explicitly banned from generating massive, empty folder trees upfront. It will only create folders when a specific feature requires them.
-- **Strict Framework Respect:** No more overriding your native Next.js `app/` directory with a forced `src/app/` layout. The orchestrator now reads and respects your existing stack conventions.
-- **Public vs. Private Components:** We codified the Feature-Based Architecture model. Reusable components go to `shared/components/` (or `components/ui/` for Shadcn), while feature-specific logic is locked securely inside `features/<name>/components/`.
+## 📱 True Omni-Channel Execution
+We have vastly expanded the execution capabilities of the **Cast** and **Paint** pipelines. `@istmx/skills` now natively detects your environment and executes flawless design-engineering principles across:
+* **Web:** Advanced DOM motion, GSAP, WebGL (Three.js), and CSS-Native architectures.
+* **Apple:** Native SwiftUI (iOS + macOS) and complex Metal Shaders.
+* **Android:** Native Jetpack Compose, Compose Multiplatform, and AGSL Shaders.
 
-### 📝 The Spec Writer (`/istm-craft`)
-- **"One Spec At A Time" Mandate:** Prevented the AI from hallucinating 10 features simultaneously. If you ask for Auth, Billing, and a Dashboard, it will now strictly spec Auth first and force you to build it before moving on.
-- **Global Design First:** Step 1 of any generated build plan is now mandated to be setting up `globals.css` (with your custom design tokens) and configuring the `layout.tsx` wrapper. 
-- **Dynamic URL Documentation:** You can now paste documentation URLs directly into your prompt. The AI will web-scrape them, override its outdated internal training data with the bleeding-edge syntax, and cache the rules in `.istm-context/docs/` for future sessions.
+## 🛡️ Enterprise Workflow Guardrails
+We have massively upgraded the Day-to-Day workflows (`/istm-develop`, `/istm-scope`, `/istm-craft`) to protect your codebase from AI hallucinations:
+* **The Spec Gate:** The AI is now mathematically forbidden from guessing. If a load-bearing architectural decision is missing, it refuses to code and routes you back to the architect.
+* **Git Guardrails:** Before generating a single line of code, the AI silently runs `git fetch` to check for uncommitted work and ensure it doesn't overwrite a teammate's branch.
+* **Workflow Tiers:** Features are now assigned strict rigor dials (`Vibe`, `Lean`, `Medium`, `Full`) dictating exactly how much testing and pre-merge code review they require before shipping.
+* **Live URL Caching:** The AI actively reads bleeding-edge documentation links from your prompt to bypass stale training data, instantly caching that knowledge into `.istm-context/docs/` for future sessions.
 
-### 💻 The Execution Engine (`/istm-develop`)
-- **Native Shadcn Support:** The builder AI is now fully authorized to use `shadcn/ui` instead of reinventing buttons from scratch, provided it perfectly overrides the Shadcn tokens to match your bespoke `design.md`.
-- **Absolute Typing Ban:** Enforced a strict `No any` rule. The AI must create dedicated `types/` and `constants/` folders instead of dumping magic strings randomly in the codebase.
-
-### 🎨 The Design Orchestrator (`/istm-design`)
-- **Bespoke Prompt Parsing:** Removed the lazy "4 generic styles" presets. The AI now deeply parses your prompt to extract your unique aesthetic vision (e.g., "massive typography and vibrant colors") and builds a custom design token system.
-- **Mandatory Pre-Reading:** Implemented a new `Step 0` execution gate. The AI must recursively read the massive rule sets in the `istm-design/` subdirectories before generating any templates.
-
-### 🤝 Open Source & Licensing
-- Upgraded the repository for public collaboration.
-- Added a comprehensive **AI Collaboration Code of Conduct**.
-- Expanded the **MIT License** to explicitly state that all output generated by the AI is 100% owned by the user, shielding developers from legal friction.
-
----
-
-**Upgrade today to experience true Agentic Orchestration:**
-```bash
-npx @istmx/skills init
-```
+## 🧹 Deep Clean & Architecture Revamp
+* Expanded internal design and motion intel to natively support Awwwards-winning frontend standards right out of the box. Everything is natively integrated as `@istmx/skills`.
+* Complete rewrite of the root `README.md` to reflect the new Claude Code optimization and enterprise capabilities.
